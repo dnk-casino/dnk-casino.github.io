@@ -1,2 +1,3 @@
-# dnk-casino.github.io
-Web para el casino
+# [DNK]{CASINO}[WEB]
+* Tragaperras: https://tragaperras.onrender.com/
+* Blackjack: https://blackjack-cwxf.onrender.com/
