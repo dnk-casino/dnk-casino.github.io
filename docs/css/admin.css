@@ -1,0 +1,120 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 20px;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+#menu {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#menu li {
+  display: inline;
+}
+
+#menu a {
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+#menu a:hover {
+  background-color: #ddd;
+}
+
+#menu a.active {
+  background-color: #333;
+  color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+#userTable {
+  table-layout: fixed;
+}
+
+#userTable td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-skins {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skins,
+.coins,
+.acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-skins-button,
+.edit-coins-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.coins-input {
+  width: 5em;
+}
+
+.save-button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-button {
+  padding: 8px 16px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button:hover {
+  background-color: #af3030;
+}

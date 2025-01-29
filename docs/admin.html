@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <h1>Panel de Administración</h1>
+
+    <!-- Contenedor para el login -->
+    <div id="auth-section">
+        <h2 id="auth-section-title">Iniciar Sesión</h2>
+
+        <form id="loginForm" style="display: block;">
+            <input type="text" id="loginUsername" placeholder="Usuario" required>
+            <input type="password" id="loginPassword" placeholder="Contraseña" required>
+            <div class="buttons">
+                <button type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Contenedor para el panel de admin -->
+    <div id="admin-section" style="display: none;">
+        <div id="menu"></div>
+        <div id="users-section"></div>
+        <div id="skins-section"></div>
+        <button id="logout-button">Cerrar Sesión</button>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
