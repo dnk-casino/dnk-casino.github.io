@@ -1,3 +1,5 @@
+import { HOST } from "./host.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const authSection = document.getElementById('auth-section');
     const gameSection = document.getElementById('game-section');
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
 
-        const response = await fetch('/api/auth/login', {
+        const response = await fetch(HOST + '/api/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('registerPassword').value;
         const email = document.getElementById('registerEmail').value;
 
-        const response = await fetch('/api/auth/register', {
+        const response = await fetch(HOST + '/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password, email, rol: 'ROLE_USER' })
@@ -76,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const mensajeDiv = document.getElementById('restablecerMessage');
 
         if (correo !== '') {
-            fetch('/api/auth/olvidar-contrasena', {
+            fetch(HOST + '/api/auth/olvidar-contrasena', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -136,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para cargar las monedas del usuario
 function loadCoins() {
     const coinsAmount = document.getElementById('coins-amount');
-    fetch('/coins', {
+    fetch(HOST + '/coins', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
