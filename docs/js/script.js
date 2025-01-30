@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const token = await response.text(); // Podrías guardar un JWT si usas uno
             localStorage.setItem('token', token);
             loadCoins();
-            cargarSkins();
-            loadRanking();
             toggleSections();
         } else {
             alert('Usuario o contraseña incorrectos');
