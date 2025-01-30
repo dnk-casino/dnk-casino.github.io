@@ -1,9 +1,9 @@
 {
-    "id": "dnk.casino.tragaperras",
+    "id": "dnk.casino.app",
     "lang": "es-ES",
-    "short_name": "Tragaperras",
-    "name": "[DNK]{CASINO}[Tragaperras]",
-    "description": "La Tragaperras del Casino",
+    "short_name": "DNK-Casino",
+    "name": "[DNK]{CASINO}[APP]",
+    "description": "La aplicación del Casino",
     "start_url": "/",
     "display": "fullscreen",
     "icons": [
@@ -30,7 +30,7 @@
     "screenshots": [
         {
             "src": "screenshots/desktop-home.webp",
-            "sizes": "1722x915",
+            "sizes": "1920x1080",
             "type": "image/webp",
             "form_factor": "wide",
             "label": "Pantalla de juego principal vista desde un PC"
