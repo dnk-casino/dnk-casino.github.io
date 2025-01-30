@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Blackjack</h1>
+
+    <!-- Contenedor del juego, inicialmente oculto -->
+    <div id="game-section" style="display: none;">
+        <div class="apuestas">
+            <div class="buttons">
+                <button class="button .play-button" id="apuesta-5">5 🪙</button>
+                <button class="button .play-button" id="apuesta-25">25 🪙</button>
+                <button class="button .play-button" id="apuesta-50">50 🪙</button>
+            </div>
+        </div>
+        <div class="juego">
+            <div class="ia">
+                <h2>Dealer</h2>
+                <p><span id="mano-ia" class="mano"></span></p>
+                <p><span id="valor-ia" class="valor"></span></p>
+            </div>
+            <hr>
+            <div class="jugador">
+                <h2>Jugador</h2>
+                <p><span id="mano-jugador" class="mano"></span></p>
+                <p><span id="valor-jugador" class="valor"></span></p>
+                <div class="buttons">
+                    <button id="pedir-carta">Pedir carta</button>
+                    <button id="plantarse">Plantarse</button>
+                </div>
+            </div>
+            <div class="resultado">
+                <p id="resultado"></p>
+                <div class="buttons">
+                    <button id="salir">Terminar partida</button>
+                </div>
+            </div>
+        </div>
+        <div id="premios-panel"></div>
+        <div id="ranking-panel"></div>
+        <button id="logout-button" title="Cerrar Sesión">Cerrar Sesión</button>
+        <div id="coins-container" class="coins-container">
+            <span id="coins-amount" class="coins-amount"></span>
+        </div>
+    </div>
+
+    <script src="js/blackjack.js"></script>
+</body>
+
+</html>

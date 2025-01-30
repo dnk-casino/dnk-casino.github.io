@@ -1,3 +1,4 @@
+/* Estilos generales */
 html {
   height: 100%;
 }
@@ -26,6 +27,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Estilos para la máquina tragaperras */
 .slot-machine {
   width: 30%;
   margin: 40px auto;
@@ -140,6 +142,7 @@ select option {
   direction: rtl;
 }
 
+/* Estilos para la autenticación */
 #auth-section {
   width: 320px;
   padding: 20px;
@@ -201,6 +204,7 @@ select option {
   background-color: rgb(186, 32, 32);
 }
 
+/* Estilos para el panel de ranking y premios */
 .coins-container {
   position: fixed;
   top: 20px;
@@ -291,12 +295,110 @@ select option {
   font-weight: bold;
 }
 
+/* Estilos para la apuesta */
+.apuestas {
+  width: 30%;
+  margin: 40px auto;
+  text-align: center;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.resultado {
+  display: none;
+}
+
+.juego {
+  display: none;
+  width: 45%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #333;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.juego h2 {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 32px;
+  margin: 0 auto;
+}
+
+.juego p {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.juego .buttons {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.mano {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.cartaOculta {
+  height: fit-content;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: black;
+}
+
+.carta {
+  height: fit-content;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  color: black;
+}
+
+.carta div:first-child,
+.cartaOculta div:first-child {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.carta div:last-child,
+.cartaOculta div:last-child {
+  font-size: 48px;
+}
+
+/* Estilos para la orientación portrait */
 @media screen and (orientation: portrait) {
+  body {
+    background-image: url("https://picsum.photos/1080/1920");
+  }
+
   h1 {
     font-size: 500%;
   }
 
   .slot-machine,
+  .apuestas,
   #ranking-panel,
   #premios-panel {
     width: 80%;
@@ -319,13 +421,21 @@ select option {
   }
 
   .buttons button,
-  #showRestablecer {
-    font-size: 300%;
-  }
-
-  #skin {
-    width: 100%;
-    height: 5vh;
+  .juego button,
+  .juego .valor,
+  .juego h2,
+  .juego .resultado p,
+  #showRestablecer,
+  #ranking-panel h3,
+  #premios-panel h3,
+  #ranking-panel table td,
+  #premios-panel table td,
+  #message,
+  #restablecerMessage,
+  .carta div:first-child,
+  .carta div:last-child,
+  .cartaOculta div:first-child,
+  .cartaOculta div:last-child {
     font-size: 300%;
   }
 
@@ -336,15 +446,6 @@ select option {
     left: auto;
     right: auto;
     padding-bottom: 2vh;
-  }
-
-  #ranking-panel h3,
-  #premios-panel h3,
-  #ranking-panel table td,
-  #premios-panel table td,
-  #message,
-  #restablecerMessage {
-    font-size: 300%;
   }
 
   #ranking-panel table,
