@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!!localStorage.getItem('token')) {
             gameSection.style.display = 'block';
         } else {
-            location.replace = "/";
+            location.replace("/");
         }
     };
 
