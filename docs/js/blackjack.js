@@ -1,3 +1,5 @@
+import { HOST } from "./host.js";
+
 const palos = {
     OCULTO: { nombre: "Oculto", simbolo: "🔳" },
     CORAZONES: { nombre: "Corazones", simbolo: "♥️" },
@@ -31,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     pedirCarta.addEventListener('click', () => {
         const id = localStorage.getItem('juegoID');
-        fetch(`/pedir-carta/${id}`, {
+        fetch(HOST + `/api/blackjack/pedir-carta/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     plantarse.addEventListener('click', () => {
         const id = localStorage.getItem('juegoID');
-        fetch(`/plantarse/${id}`, {
+        fetch(HOST + `/api/blackjack/plantarse/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -101,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para cargar las monedas del usuario
 function loadCoins() {
     const coinsAmount = document.getElementById('coins-amount');
-    fetch('/coins', {
+    fetch(HOST + '/api/coins', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -126,7 +128,7 @@ function playGame(apuesta) {
     buttons.forEach(button => button.classList.add('disabled'));
 
     // Envía la solicitud al servidor
-    fetch(`/crear-juego/${apuesta}`, {
+    fetch(HOST + `/api/blackjack/crear-juego/${apuesta}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -257,7 +259,7 @@ function recuperarJuego() {
     const juego = document.querySelector('.juego');
 
     if (localStorage.getItem('juegoID') !== null) {
-        fetch(`/juego/${localStorage.getItem('juegoID')}`, {
+        fetch(HOST + `/api/blackjack/juego/${localStorage.getItem('juegoID')}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -278,7 +280,7 @@ function recuperarJuego() {
                 console.error(error);
             });
     } else {
-        fetch('/juegoActivo', {
+        fetch(HOST + '/api/blackjack/juegoActivo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -335,7 +337,7 @@ document.getElementById('salir').addEventListener('click', function () {
 });
 
 function loadRanking() {
-    fetch('/ranking', {
+    fetch(HOST + '/api/blackjack/ranking', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

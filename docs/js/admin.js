@@ -1,3 +1,5 @@
+import { HOST } from "./host.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const authSection = document.getElementById('auth-section');
     const adminSection = document.getElementById('admin-section');
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
 
-        const response = await fetch('/api/auth/admin/login', {
+        const response = await fetch(HOST + '/api/auth/admin/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cargar skins disponibles
     const loadSkins = async () => {
-        const response = await fetch('/skins', {
+        const response = await fetch(HOST + '/api/tragaperras/skins', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const loadUsersPanel = async () => {
-            fetch('/admin/api/users', {
+            fetch(HOST + '/admin/api/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -278,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const selectedSkins = Array.from(checkboxesContainer.querySelectorAll('input:checked')).reverse().map(checkbox => checkbox.value);
 
                             // Realizar el PUT con los datos actualizados
-                            const response = await fetch(`/admin/api/users/${id}`, {
+                            const response = await fetch(HOST + `/admin/api/users/${id}`, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json',
@@ -302,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar al usuario ${nombre}?`);
 
                             if (confirmDelete) {
-                                const response = await fetch(`/admin/api/users/${id}`, {
+                                const response = await fetch(HOST + `/admin/api/users/${id}`, {
                                     method: 'DELETE',
                                     headers: {
                                         'Content-Type': 'application/json',
@@ -412,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     reels,
                     vendible
                 };
-                fetch('/admin/api/skins/create', {
+                fetch(HOST + '/admin/api/skins/create', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -531,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const reels = row.querySelector('input[name="reels"]').value.split(",");
                     const vendible = row.querySelector('input[name="vendible"]').checked;
 
-                    const response = await fetch(`/admin/api/skins/${id}`, {
+                    const response = await fetch(HOST + `/admin/api/skins/${id}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -554,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar la skin ${nombre}?`);
 
                     if (confirmDelete) {
-                        const response = await fetch(`/admin/api/skins/${id}`, {
+                        const response = await fetch(HOST + `/admin/api/skins/${id}`, {
                             method: 'DELETE',
                             headers: {
                                 'Content-Type': 'application/json',

@@ -1,3 +1,5 @@
+import { HOST } from "./host.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const logoutButton = document.getElementById('logout-button');
 
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para cargar las monedas del usuario
 function loadCoins() {
     const coinsAmount = document.getElementById('coins-amount');
-    fetch('/coins', {
+    fetch(HOST + '/api/coins', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -46,7 +48,7 @@ function checkAuth() {
 // Cargar todas las skins
 async function loadSkinsVendibles(vendible = true) {
     try {
-        const response = await fetch('/skins/vendibles', {
+        const response = await fetch(HOST + '/api/tragaperras/skins/vendibles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -66,7 +68,7 @@ async function loadSkinsVendibles(vendible = true) {
 // Cargar las skins desbloqueadas
 async function loadSkinsDesbloqueadas() {
     try {
-        const response = await fetch('/skins/desbloqueadas/id', {
+        const response = await fetch(HOST + '/api/tragaperras/skins/desbloqueadas/id', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -142,7 +144,7 @@ async function tiendaSkins() {
 
 function comprarSkin(name) {
     var data = { "name": name };
-    fetch('/shop/api/comprar/skin', {
+    fetch(HOST + '/shop/api/comprar/skin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

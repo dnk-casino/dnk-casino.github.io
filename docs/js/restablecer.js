@@ -1,3 +1,5 @@
+import { HOST } from "./host.js";
+
 const formulario = document.getElementById('formulario-restablecer');
 const tokenInput = document.getElementById('token');
 const nuevaContrasenaInput = document.getElementById('nuevaContrasena');
@@ -11,7 +13,7 @@ formulario.addEventListener('submit', (e) => {
     const confirmarContrasena = confirmarContrasenaInput.value.trim();
     if (token !== '' && nuevaContrasena !== '' && confirmarContrasena !== '') {
         if (nuevaContrasena === confirmarContrasena) {
-            fetch('/api/auth/restablecer-contrasena/' + token, {
+            fetch(HOST + '/api/auth/restablecer-contrasena/' + token, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

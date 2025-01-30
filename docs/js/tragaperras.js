@@ -1,3 +1,5 @@
+import { HOST } from "./host.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const gameSection = document.getElementById('game-section');
     const logoutButton = document.getElementById('logout-button');
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejo para cargar las skins en el select
     const cargarSkins = () => {
-        fetch('/skins/desbloqueadas', {
+        fetch(HOST + '/api/tragaperras/skins/desbloqueadas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para cargar las monedas del usuario
 function loadCoins() {
     const coinsAmount = document.getElementById('coins-amount');
-    fetch('/coins', {
+    fetch(HOST + '/api/coins', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -105,7 +107,7 @@ function playGame(cost) {
 
     // Envía la solicitud al servidor
     var data = { "skin": document.getElementById('skin').value, "cost": cost };
-    fetch('/play', {
+    fetch(HOST + '/api/tragaperras/play', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -171,7 +173,7 @@ document.getElementById('play-button-3').addEventListener('click', function () {
 });
 
 document.getElementById('show-wins-button').addEventListener('click', function () {
-    fetch('/wins', {
+    fetch(HOST + '/api/tragaperras/wins', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -190,7 +192,7 @@ document.getElementById('tienda').addEventListener('click', function () {
 });
 
 function loadRanking() {
-    fetch('/ranking', {
+    fetch(HOST + '/api/tragaperras/ranking', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -238,7 +240,7 @@ function loadRanking() {
 };
 
 function loadPremios(skinId) {
-    fetch(`/skins/${skinId}`, {
+    fetch(HOST + `/api/tragaperras/skins/${skinId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
