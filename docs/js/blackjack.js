@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!!localStorage.getItem('token')) {
             gameSection.style.display = 'block';
         } else {
-            location.href = "/"
+            location.replace = "/"
         }
     };
 
