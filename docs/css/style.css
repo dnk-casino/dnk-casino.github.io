@@ -130,6 +130,10 @@ button:active {
   padding: 0;
 }
 
+li:not(:last-child) {
+  margin-bottom: 1em;
+}
+
 @media screen and (orientation: portrait) {
   h1 {
     font-size: 500%;
