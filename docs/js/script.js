@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para cargar las monedas del usuario
 function loadCoins() {
     const coinsAmount = document.getElementById('coins-amount');
-    fetch(HOST + '/coins', {
+    fetch(HOST + '/api/coins', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
