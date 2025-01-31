@@ -79,6 +79,8 @@ h1 {
 }
 
 .cartaOculta {
+    --black-alpha: rgba(0, 0, 0, 0.3);
+    --black-alpha-2: rgba(0, 0, 0, 0.4);
     height: fit-content;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -88,8 +90,11 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
     color: black;
+    background-color: var(--black-alpha);
+    background-image: linear-gradient(45deg, var(--black-alpha) 24%, var(--black-alpha-2) 25%, var(--black-alpha-2) 26%, var(--black-alpha) 26%, var(--black-alpha) 74%, var(--black-alpha-2) 75%, var(--black-alpha-2) 76%, var(--black-alpha) 76%),
+        linear-gradient(-45deg, var(--black-alpha) 24%, var(--black-alpha-2) 25%, var(--black-alpha-2) 26%, var(--black-alpha) 26%, var(--black-alpha) 74%, var(--black-alpha-2) 75%, var(--black-alpha-2) 76%, var(--black-alpha) 76%);
+    background-size: 100px 100px;
 }
 
 .carta {
