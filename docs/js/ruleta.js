@@ -181,8 +181,8 @@ function loadRuletas() {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
     })
-    .then(response => response.json())
-    .then(data => {
+        .then(response => response.json())
+        .then(data => {
             const ruletas = document.getElementById('ruletas');
             const tabla = document.createElement('table');
             data.forEach((ruleta, i) => {
@@ -191,10 +191,10 @@ function loadRuletas() {
                 const acciones = document.createElement('td');
                 const entrar = document.createElement('button');
 
-                nombre.textContent = "Ruleta #" + i;
+                nombre.textContent = "Ruleta #" + (i + 1);
                 nombre.title = nombre.textContent;
                 entrar.textContent = "👁️"
-                entrar.title = "Ver ruleta #" + i;
+                entrar.title = "Ver ruleta #" + (i + 1);
                 entrar.addEventListener('click', () => { verRuleta(ruleta.id); });
                 acciones.appendChild(entrar);
                 fila.appendChild(nombre);
