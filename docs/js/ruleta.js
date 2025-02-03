@@ -174,7 +174,6 @@ function pagarCoins(cost) {
 }
 
 function loadRuletas() {
-    const ruletas = document.getElementById('ruletas');
     fetch(HOST + '/api/ruleta/abiertas', {
         method: 'GET',
         headers: {
@@ -182,9 +181,9 @@ function loadRuletas() {
             'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
+    .then(response => response.json())
+    .then(data => {
+            const ruletas = document.getElementById('ruletas');
             const tabla = document.createElement('table');
             data.forEach((ruleta, i) => {
                 const fila = document.createElement('tr');
@@ -196,8 +195,8 @@ function loadRuletas() {
                 nombre.title = nombre.textContent;
                 entrar.textContent = "👁️"
                 entrar.title = "Ver ruleta #" + i;
+                entrar.addEventListener('click', () => { verRuleta(ruleta.id); });
                 acciones.appendChild(entrar);
-                fila.id = ruleta.id;
                 fila.appendChild(nombre);
                 fila.appendChild(acciones);
                 tabla.appendChild(fila);
@@ -227,6 +226,24 @@ function crearRuleta() {
         .then(data => {
             console.log(data);
             loadRuletas();
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function verRuleta(id) {
+    fetch(HOST + `/api/ruleta/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            const ruletas = document.getElementById('ruletas');
+            const xd = document.createElement('p');
+            xd.textContent = data;
+            ruletas.replaceChildren(xd);
         })
         .catch(error => console.error('Error:', error));
 }
