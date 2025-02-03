@@ -241,9 +241,37 @@ function verRuleta(id) {
         .then(response => response.json())
         .then(data => {
             const ruletas = document.getElementById('ruletas');
-            const xd = document.createElement('p');
-            xd.textContent = data;
-            ruletas.replaceChildren(xd);
+            const ruleta = document.createElement('img');
+            const mapa = document.createElement('map');
+
+            ruleta.src = "images/ruleta.jpg";
+            ruleta.useMap = "#ruleta";
+            mapa.name = "ruleta";
+            for (let i = 0; i <= 36; i++) {
+                const area = document.createElement('area');
+                area.alt = i;
+                area.title = i;
+                area.shape = "rect";
+                area.addEventListener('click', () => { apostar(i); });
+                switch (i) {
+                    case 1:
+                        area.coords = "10,10,10,10";
+                        break;
+
+                    //case 0
+                    default:
+                        area.coords = "0,0,0,0";
+                        break;
+                }
+                mapa.appendChild(area);
+            }
+            //Falta las areas para las apuestas que no son Plenos
+
+            ruletas.replaceChildren(ruleta, mapa);
         })
         .catch(error => console.error('Error:', error));
+}
+
+function apostar(casilla) {
+    // Falta esto
 }
