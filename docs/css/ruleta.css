@@ -1,0 +1,364 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url("https://picsum.photos/1920/1080");
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.disabled,
+.disabled:hover,
+.disabled:active {
+    background-color: darkslategray;
+    color: rgb(53, 99, 99);
+    cursor: not-allowed;
+    transform: none;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.apuestas {
+    width: 30%;
+    margin: 40px auto;
+    text-align: center;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.resultado {
+    display: none;
+}
+
+.juego {
+    display: none;
+    width: 45%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #333;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.juego h2 {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 32px;
+    margin: 0 auto;
+}
+
+.juego p {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.juego .buttons {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.mano {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.cartaOculta {
+    height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: black;
+}
+
+.carta {
+    height: fit-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.carta div:first-child,
+.cartaOculta div:first-child {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.carta div:last-child,
+.cartaOculta div:last-child {
+    font-size: 48px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.juego .buttons {
+    gap: 2em;
+}
+
+.juego .buttons :first-child {
+    margin-left: 1em;
+}
+
+.juego .buttons :last-child {
+    margin-right: 1em;
+}
+
+.juego .buttons button {
+    width: 100%;
+}
+
+#tienda {
+    background-color: gold;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+#message {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#restablecerMessage {
+    font-size: 19px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#logout-button {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    margin: 20px auto;
+    background-color: rgb(186, 32, 32);
+}
+
+.coins-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.coins-amount {
+    margin: 0;
+    padding: 0;
+}
+
+#ranking-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 22%;
+    background-color: #333;
+    padding: 10px 10px 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#ranking-panel h3,
+#premios-panel h3 {
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+#ranking-panel hr,
+#premios-panel hr {
+    transform: translateY(-10.5px);
+    width: 90%;
+}
+
+#ranking-panel table,
+#premios-panel table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 90%;
+    table-layout: fixed;
+}
+
+#premios-panel table td~td {
+    padding-top: 0.1em;
+    padding-right: 0.5em;
+}
+
+#premios-panel table td {
+    white-space-collapse: preserve;
+    text-align: end;
+}
+
+#premios-panel table td:nth-child(2) {
+    padding-right: 1em;
+}
+
+#premios-panel table td:last-child {
+    white-space-collapse: collapse;
+}
+
+#ranking-panel table td:first-child,
+#premios-panel table td:first-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#premios-panel {
+    position: absolute;
+    top: 15%;
+    right: 20px;
+    width: 22%;
+    background-color: #333;
+    padding: 10px 10px 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media screen and (orientation: portrait) {
+    h1 {
+        font-size: 500%;
+    }
+
+    .juego,
+    .apuestas,
+    #ranking-panel,
+    #premios-panel {
+        width: 80%;
+        margin: 20px auto;
+    }
+
+    .buttons,
+    #showRestablecer {
+        padding: auto;
+    }
+
+    .buttons button,
+    .juego button,
+    .juego .valor,
+    .juego h2,
+    .juego .resultado p,
+    #showRestablecer,
+    #ranking-panel h3,
+    #premios-panel h3,
+    #ranking-panel table td,
+    #premios-panel table td,
+    #message,
+    #restablecerMessage,
+    .carta div:first-child,
+    .carta div:last-child,
+    .cartaOculta div:first-child,
+    .cartaOculta div:last-child {
+        font-size: 300%;
+    }
+
+    #ranking-panel,
+    #premios-panel {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        padding-bottom: 2vh;
+    }
+
+    #ranking-panel table,
+    #premios-panel table {
+        width: 100%;
+    }
+
+    #logout-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        bottom: auto;
+        margin: 0 auto;
+        font-size: 24px;
+    }
+
+    #ranking-panel table td:first-child,
+    #premios-panel table td:first-child {
+        padding-left: 10%;
+    }
+
+    #ranking-panel table td~td,
+    #premios-panel table td~td {
+        padding-left: 0;
+    }
+
+    #coins-amount {
+        font-size: 200%;
+        padding: 1vw;
+    }
+
+    #message,
+    #restablecerMessage {
+        margin-top: 20px;
+    }
+
+    #ranking-panel hr,
+    #premios-panel hr {
+        transform: translateY(-27px);
+        width: 90%;
+    }
+}
