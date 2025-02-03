@@ -203,7 +203,7 @@ function loadRuletas() {
             });
             ruletas.replaceChildren(tabla);
 
-            if (data.length <= 5) {
+            if (data.length < 5) {
                 const addRuleta = document.createElement('button');
                 addRuleta.textContent = "Añadir ruleta";
                 addRuleta.title = addRuleta.textContent;
