@@ -107,15 +107,15 @@ function loadPremios() {
     const colResultados = document.createElement('col');
     const colPremios = document.createElement('col');
     const apuestas = [
-        [{ tipo: "Pleno", numeros: 1, premio: 35 }],
-        [{ tipo: "Caballos", numeros: 2, premio: 17 }],
-        [{ tipo: "Transversal", numeros: 3, premio: 11 }],
-        [{ tipo: "Cuadro", numeros: 4, premio: 8 }],
-        [{ tipo: "Seisena", numeros: 6, premio: 5 }],
-        [{ tipo: "Columna", numeros: 12, premio: 2 }],
-        [{ tipo: "Docena", numeros: 12, premio: 2 }],
-        [{ tipo: "Doble Columna", numeros: 24, premio: 1.5 }],
-        [{ tipo: "Doble Docena", numeros: 24, premio: 1.5 }]
+        { tipo: "Pleno", numeros: 1, premio: 35 },
+        { tipo: "Caballos", numeros: 2, premio: 17 },
+        { tipo: "Transversal", numeros: 3, premio: 11 },
+        { tipo: "Cuadro", numeros: 4, premio: 8 },
+        { tipo: "Seisena", numeros: 6, premio: 5 },
+        { tipo: "Columna", numeros: 12, premio: 2 },
+        { tipo: "Docena", numeros: 12, premio: 2 },
+        { tipo: "Doble Columna", numeros: 24, premio: 1.5 },
+        { tipo: "Doble Docena", numeros: 24, premio: 1.5 }
     ];
 
     premiosTitle.textContent = "PREMIOS";
