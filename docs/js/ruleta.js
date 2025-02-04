@@ -106,7 +106,17 @@ function loadPremios() {
     const colApuestas = document.createElement('col');
     const colResultados = document.createElement('col');
     const colPremios = document.createElement('col');
-    const apuestas = [5, 25, 50];
+    const apuestas = [
+        ["Pleno", { numeros: 1, premio: 35 }],
+        ["Caballos", { numeros: 2, premio: 17 }],
+        ["Transversal", { numeros: 3, premio: 11 }],
+        ["Cuadro", { numeros: 4, premio: 8 }],
+        ["Seisena", { numeros: 6, premio: 5 }],
+        ["Columna", { numeros: 12, premio: 2 }],
+        ["Decena", { numeros: 12, premio: 2 }],
+        ["Doble Columna", { numeros: 24, premio: 1.5 }],
+        ["Doble Docena", { numeros: 24, premio: 1.5 }]
+    ];
 
     premiosTitle.textContent = "PREMIOS";
     colApuestas.span = "1";
@@ -122,38 +132,22 @@ function loadPremios() {
     premiosTable.appendChild(premiosTableGroup);
 
     apuestas.forEach((apuesta) => {
-        let resultado;
-        let premio;
-        for (let i = 0; i < 2; i++) {
-            const fila = document.createElement('tr');
-            const colApuesta = document.createElement('td');
-            const colResultado = document.createElement('td');
-            const colPremio = document.createElement('td');
+        const fila = document.createElement('tr');
+        const colApuesta = document.createElement('td');
+        const colResultado = document.createElement('td');
+        const colPremio = document.createElement('td');
 
-            switch (i) {
-                case 0:
-                    resultado = "Victoria";
-                    premio = apuesta * 2;
-                    break;
+        colApuesta.textContent = apuesta;
+        colApuesta.title = colApuesta.textContent;
+        colResultado.textContent = apuesta.numeros + apuesta.numeros > 1 ? "Números" : "Número";
+        colResultado.title = colResultado.textContent;
+        colPremio.textContent = `x${apuesta.premio}\t🪙`;
+        colPremio.title = `x${apuesta.premio} 🪙`;
 
-                case 1:
-                    resultado = "Empate";
-                    premio = apuesta;
-                    break;
-            }
-
-            colApuesta.textContent = `${apuesta}\t🪙`;
-            colApuesta.title = `${apuesta} 🪙`;
-            colResultado.textContent = resultado;
-            colResultado.title = resultado;
-            colPremio.textContent = `${premio}\t🪙`;
-            colPremio.title = `${premio} 🪙`;
-
-            fila.appendChild(colApuesta);
-            fila.appendChild(colResultado);
-            fila.appendChild(colPremio);
-            premiosTable.appendChild(fila);
-        }
+        fila.appendChild(colApuesta);
+        fila.appendChild(colResultado);
+        fila.appendChild(colPremio);
+        premiosTable.appendChild(fila);
     });
     premiosPanel.replaceChildren(premiosTitle, hr, premiosTable);
 }
