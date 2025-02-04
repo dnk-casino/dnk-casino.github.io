@@ -5,7 +5,7 @@
     "name": "[DNK]{CASINO}[APP]",
     "description": "La aplicación del Casino",
     "start_url": "/",
-    "display": "fullscreen",
+    "display": "standalone",
     "icons": [
         {
             "src": "logos/logo16.png",
