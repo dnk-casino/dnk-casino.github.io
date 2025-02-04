@@ -113,7 +113,7 @@ function loadPremios() {
         [{ tipo: "Cuadro", numeros: 4, premio: 8 }],
         [{ tipo: "Seisena", numeros: 6, premio: 5 }],
         [{ tipo: "Columna", numeros: 12, premio: 2 }],
-        [{ tipo: "Decena", numeros: 12, premio: 2 }],
+        [{ tipo: "Docena", numeros: 12, premio: 2 }],
         [{ tipo: "Doble Columna", numeros: 24, premio: 1.5 }],
         [{ tipo: "Doble Docena", numeros: 24, premio: 1.5 }]
     ];
