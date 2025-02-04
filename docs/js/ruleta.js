@@ -120,9 +120,9 @@ function loadPremios() {
 
     premiosTitle.textContent = "PREMIOS";
     colApuestas.span = "1";
-    colApuestas.style = "width: 70%";
+    colApuestas.style = "width: 60%";
     colPremios.span = "1";
-    colPremios.style = "width: 30%";
+    colPremios.style = "width: 40%";
 
     premiosTableGroup.appendChild(colApuestas);
     premiosTableGroup.appendChild(colResultados);

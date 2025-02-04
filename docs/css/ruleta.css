@@ -40,7 +40,7 @@ h1 {
     display: none;
 }
 
-.juego {
+#ruletas {
     display: none;
     width: 45%;
     margin: 0 auto;
@@ -51,21 +51,21 @@ h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.juego h2 {
+#ruletas h2 {
     color: #fff;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     font-size: 32px;
     margin: 0 auto;
 }
 
-.juego p {
+#ruletas p {
     color: #fff;
     font-size: 24px;
     font-weight: bold;
     margin: 0 auto;
 }
 
-.juego .buttons {
+#ruletas .buttons {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
@@ -134,19 +134,19 @@ button {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.juego .buttons {
+#ruletas .buttons {
     gap: 2em;
 }
 
-.juego .buttons :first-child {
+#ruletas .buttons :first-child {
     margin-left: 1em;
 }
 
-.juego .buttons :last-child {
+#ruletas .buttons :last-child {
     margin-right: 1em;
 }
 
-.juego .buttons button {
+#ruletas .buttons button {
     width: 100%;
 }
 
@@ -247,10 +247,6 @@ button:active {
     text-align: end;
 }
 
-#premios-panel table td:nth-child(2) {
-    padding-right: 1em;
-}
-
 #premios-panel table td:last-child {
     white-space-collapse: collapse;
 }
@@ -281,7 +277,7 @@ button:active {
         font-size: 500%;
     }
 
-    .juego,
+    #ruletas,
     .apuestas,
     #ranking-panel,
     #premios-panel {
@@ -295,10 +291,10 @@ button:active {
     }
 
     .buttons button,
-    .juego button,
-    .juego .valor,
-    .juego h2,
-    .juego .resultado p,
+    #ruletas button,
+    #ruletas .valor,
+    #ruletas h2,
+    #ruletas .resultado p,
     #showRestablecer,
     #ranking-panel h3,
     #premios-panel h3,
