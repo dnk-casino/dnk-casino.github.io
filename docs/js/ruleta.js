@@ -104,7 +104,6 @@ function loadPremios() {
     const premiosTable = document.createElement('table');
     const premiosTableGroup = document.createElement('colgroup');
     const colApuestas = document.createElement('col');
-    const colResultados = document.createElement('col');
     const colPremios = document.createElement('col');
     const apuestas = [
         { tipo: "Pleno", numeros: 1, premio: 35 },
@@ -125,7 +124,6 @@ function loadPremios() {
     colPremios.style = "width: 40%";
 
     premiosTableGroup.appendChild(colApuestas);
-    premiosTableGroup.appendChild(colResultados);
     premiosTableGroup.appendChild(colPremios);
     premiosTable.appendChild(premiosTableGroup);
 
