@@ -107,15 +107,15 @@ function loadPremios() {
     const colResultados = document.createElement('col');
     const colPremios = document.createElement('col');
     const apuestas = [
-        ["Pleno", { numeros: 1, premio: 35 }],
-        ["Caballos", { numeros: 2, premio: 17 }],
-        ["Transversal", { numeros: 3, premio: 11 }],
-        ["Cuadro", { numeros: 4, premio: 8 }],
-        ["Seisena", { numeros: 6, premio: 5 }],
-        ["Columna", { numeros: 12, premio: 2 }],
-        ["Decena", { numeros: 12, premio: 2 }],
-        ["Doble Columna", { numeros: 24, premio: 1.5 }],
-        ["Doble Docena", { numeros: 24, premio: 1.5 }]
+        [{ tipo: "Pleno", numeros: 1, premio: 35 }],
+        [{ tipo: "Caballos", numeros: 2, premio: 17 }],
+        [{ tipo: "Transversal", numeros: 3, premio: 11 }],
+        [{ tipo: "Cuadro", numeros: 4, premio: 8 }],
+        [{ tipo: "Seisena", numeros: 6, premio: 5 }],
+        [{ tipo: "Columna", numeros: 12, premio: 2 }],
+        [{ tipo: "Decena", numeros: 12, premio: 2 }],
+        [{ tipo: "Doble Columna", numeros: 24, premio: 1.5 }],
+        [{ tipo: "Doble Docena", numeros: 24, premio: 1.5 }]
     ];
 
     premiosTitle.textContent = "PREMIOS";
@@ -137,12 +137,12 @@ function loadPremios() {
         const colResultado = document.createElement('td');
         const colPremio = document.createElement('td');
 
-        colApuesta.textContent = apuesta[0];
+        colApuesta.textContent = apuesta.tipo;
         colApuesta.title = colApuesta.textContent;
-        colResultado.textContent = apuesta[1].numeros + apuesta[1].numeros > 1 ? "Números" : "Número";
+        colResultado.textContent = apuesta.numeros + apuesta.numeros > 1 ? "Números" : "Número";
         colResultado.title = colResultado.textContent;
-        colPremio.textContent = `x${apuesta[1].premio}\t🪙`;
-        colPremio.title = `x${apuesta[1].premio} 🪙`;
+        colPremio.textContent = `x${apuesta.premio}\t🪙`;
+        colPremio.title = `x${apuesta.premio} 🪙`;
 
         fila.appendChild(colApuesta);
         fila.appendChild(colResultado);
