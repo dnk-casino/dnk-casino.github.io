@@ -106,6 +106,10 @@ function loadPremios() {
     const colApuestas = document.createElement('col');
     const colResultados = document.createElement('col');
     const colPremios = document.createElement('col');
+    const filaCabeceras = document.createElement('tr');
+    const colApuestaCabecera = document.createElement('th');
+    const colResultadoCabecera = document.createElement('th');
+    const colPremioCabecera = document.createElement('th');
     const apuestas = [
         { tipo: "Pleno", numeros: 1, premio: 35 },
         { tipo: "Caballos", numeros: 2, premio: 17 },
@@ -125,11 +129,21 @@ function loadPremios() {
     colResultados.style = "width: 40%";
     colPremios.span = "1";
     colPremios.style = "width: 30%";
+    colApuestaCabecera.textContent = "Apuesta";
+    colApuestaCabecera.title = colApuestaCabecera.textContent;
+    colResultadoCabecera.textContent = "Números";
+    colResultadoCabecera.title = colResultadoCabecera.textContent;
+    colPremioCabecera.textContent = "Premio";
+    colPremioCabecera.title = colPremioCabecera.textContent;
 
     premiosTableGroup.appendChild(colApuestas);
     premiosTableGroup.appendChild(colResultados);
     premiosTableGroup.appendChild(colPremios);
+    filaCabeceras.appendChild(colApuestaCabecera);
+    filaCabeceras.appendChild(colResultadoCabecera);
+    filaCabeceras.appendChild(colPremioCabecera);
     premiosTable.appendChild(premiosTableGroup);
+    premiosTable.appendChild(filaCabeceras);
 
     apuestas.forEach((apuesta) => {
         const fila = document.createElement('tr');
@@ -139,7 +153,7 @@ function loadPremios() {
 
         colApuesta.textContent = apuesta.tipo;
         colApuesta.title = colApuesta.textContent;
-        colResultado.textContent = apuesta.numeros + (apuesta.numeros > 1 ? "Números" : "Número");
+        colResultado.textContent = apuesta.numeros;
         colResultado.title = colResultado.textContent;
         colPremio.textContent = `x${apuesta.premio}\t🪙`;
         colPremio.title = `x${apuesta.premio} 🪙`;
