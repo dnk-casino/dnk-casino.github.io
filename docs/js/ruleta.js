@@ -107,7 +107,7 @@ function loadPremios() {
     const colPremios = document.createElement('col');
     const apuestas = [
         { tipo: "Pleno", numeros: 1, premio: 35 },
-        { tipo: "Caballos", numeros: 2, premio: 17 },
+        { tipo: "Caballo", numeros: 2, premio: 17 },
         { tipo: "Transversal", numeros: 3, premio: 11 },
         { tipo: "Cuadro", numeros: 4, premio: 8 },
         { tipo: "Seisena", numeros: 6, premio: 5 },
