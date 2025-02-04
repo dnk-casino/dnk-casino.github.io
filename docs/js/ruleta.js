@@ -139,7 +139,7 @@ function loadPremios() {
 
         colApuesta.textContent = apuesta.tipo;
         colApuesta.title = colApuesta.textContent;
-        colResultado.textContent = apuesta.numeros + apuesta.numeros > 1 ? "Números" : "Número";
+        colResultado.textContent = apuesta.numeros + (apuesta.numeros > 1 ? "Números" : "Número");
         colResultado.title = colResultado.textContent;
         colPremio.textContent = `x${apuesta.premio}\t🪙`;
         colPremio.title = `x${apuesta.premio} 🪙`;
