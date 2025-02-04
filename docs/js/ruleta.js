@@ -137,12 +137,12 @@ function loadPremios() {
         const colResultado = document.createElement('td');
         const colPremio = document.createElement('td');
 
-        colApuesta.textContent = apuesta;
+        colApuesta.textContent = apuesta[0];
         colApuesta.title = colApuesta.textContent;
-        colResultado.textContent = apuesta.numeros + apuesta.numeros > 1 ? "Números" : "Número";
+        colResultado.textContent = apuesta[1].numeros + apuesta[1].numeros > 1 ? "Números" : "Número";
         colResultado.title = colResultado.textContent;
-        colPremio.textContent = `x${apuesta.premio}\t🪙`;
-        colPremio.title = `x${apuesta.premio} 🪙`;
+        colPremio.textContent = `x${apuesta[1].premio}\t🪙`;
+        colPremio.title = `x${apuesta[1].premio} 🪙`;
 
         fila.appendChild(colApuesta);
         fila.appendChild(colResultado);
