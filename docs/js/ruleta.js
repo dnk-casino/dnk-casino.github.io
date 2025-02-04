@@ -124,9 +124,9 @@ function loadPremios() {
 
     premiosTitle.textContent = "PREMIOS";
     colApuestas.span = "1";
-    colApuestas.style = "width: 30%";
+    colApuestas.style = "width: 40%";
     colResultados.span = "1";
-    colResultados.style = "width: 40%";
+    colResultados.style = "width: 30%";
     colPremios.span = "1";
     colPremios.style = "width: 30%";
     colApuestaCabecera.textContent = "Apuesta";
