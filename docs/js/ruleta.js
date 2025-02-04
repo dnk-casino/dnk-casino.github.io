@@ -106,10 +106,6 @@ function loadPremios() {
     const colApuestas = document.createElement('col');
     const colResultados = document.createElement('col');
     const colPremios = document.createElement('col');
-    const filaCabeceras = document.createElement('tr');
-    const colApuestaCabecera = document.createElement('th');
-    const colResultadoCabecera = document.createElement('th');
-    const colPremioCabecera = document.createElement('th');
     const apuestas = [
         { tipo: "Pleno", numeros: 1, premio: 35 },
         { tipo: "Caballos", numeros: 2, premio: 17 },
@@ -124,42 +120,26 @@ function loadPremios() {
 
     premiosTitle.textContent = "PREMIOS";
     colApuestas.span = "1";
-    colApuestas.style = "width: 40%";
-    colResultados.span = "1";
-    colResultados.style = "width: 30%";
+    colApuestas.style = "width: 70%";
     colPremios.span = "1";
     colPremios.style = "width: 30%";
-    colApuestaCabecera.textContent = "Apuesta";
-    colApuestaCabecera.title = colApuestaCabecera.textContent;
-    colResultadoCabecera.textContent = "Números";
-    colResultadoCabecera.title = colResultadoCabecera.textContent;
-    colPremioCabecera.textContent = "Premio";
-    colPremioCabecera.title = colPremioCabecera.textContent;
 
     premiosTableGroup.appendChild(colApuestas);
     premiosTableGroup.appendChild(colResultados);
     premiosTableGroup.appendChild(colPremios);
-    filaCabeceras.appendChild(colApuestaCabecera);
-    filaCabeceras.appendChild(colResultadoCabecera);
-    filaCabeceras.appendChild(colPremioCabecera);
     premiosTable.appendChild(premiosTableGroup);
-    premiosTable.appendChild(filaCabeceras);
 
     apuestas.forEach((apuesta) => {
         const fila = document.createElement('tr');
         const colApuesta = document.createElement('td');
-        const colResultado = document.createElement('td');
         const colPremio = document.createElement('td');
 
         colApuesta.textContent = apuesta.tipo;
-        colApuesta.title = colApuesta.textContent;
-        colResultado.textContent = apuesta.numeros;
-        colResultado.title = colResultado.textContent;
+        colApuesta.title = `x${apuesta.tipo}: ${apuesta.numeros} ` + (apuesta.numeros > 1 ? "Números" : "Número");
         colPremio.textContent = `x${apuesta.premio}\t🪙`;
         colPremio.title = `x${apuesta.premio} 🪙`;
 
         fila.appendChild(colApuesta);
-        fila.appendChild(colResultado);
         fila.appendChild(colPremio);
         premiosTable.appendChild(fila);
     });
