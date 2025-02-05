@@ -230,7 +230,7 @@ function verRuleta(id) {
             const ruleta = document.createElement('img');
             const mapa = document.createElement('map');
 
-            ruleta.src = "images/ruleta.jpg";
+            ruleta.src = "images/ruleta.png";
             ruleta.useMap = "#ruleta";
             mapa.name = "ruleta";
             for (let i = 0; i <= 36; i++) {
