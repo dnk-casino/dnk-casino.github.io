@@ -425,7 +425,6 @@ function verRuleta(id) {
             });
 
             ruletas.replaceChildren(ruleta, mapa);
-
         })
         .catch(error => console.error('Error:', error));
 }
