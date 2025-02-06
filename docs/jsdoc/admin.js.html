@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: admin.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: admin.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Importa la variable HOST desde el archivo host.js
  */
 import { HOST } from "./host.js";
@@ -199,37 +227,37 @@ document.addEventListener('DOMContentLoaded', () => {
                         const row = document.createElement('tr');
                         row.dataset.user = JSON.stringify(user);  // Aquí agregamos la referencia al usuario en la fila
                         row.innerHTML = `
-                    <td title="${user.username}">${user.username}</td>
-                    <td title="${user.email}">${user.email}</td>
-                    <td>
-                        <select data-id="${user.id}" class="user-role" title="Escoge un rol">
-                            <option value="ROLE_USER" ${user.rol === 'ROLE_USER' ? 'selected' : ''}>USER</option>
-                            <option value="ROLE_ADMIN" ${user.rol === 'ROLE_ADMIN' ? 'selected' : ''}>ADMIN</option>
-                            <option value="ROLE_VIP" ${user.rol === 'ROLE_VIP' ? 'selected' : ''}>VIP</option>
-                        </select>
-                    </td>
-                    <td>
-                        <div class="coins">
-                            <button data-id="${user.id}" class="edit-coins-button" title="Modificar Monedas">✏️</button>
-                            <span title="${user.coins}">${user.coins}</span>
-                            <input type="number" class="coins-input" value="${user.coins}" style="display: none;">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="skins">
-                            <button data-id="${user.id}" class="edit-skins-button" title="Modificar Skins">✏️</button>
-                            <div class="user-skins" title="${user.skins.length}">${user.skins.map(skin => document.getElementById(skin).firstChild.firstChild.value).join(', ')}</div>
-                            <div data-id="${user.id}" class="skins-checkboxes-container" style="display: none;">
-                                <!-- Se llenará con las skins -->
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="acciones">
-                            <button data-id="${user.id}" class="save-button" title="Guardar">Guardar</button>
-                            <button data-id="${user.id}" class="delete-button" title="Eliminar">Eliminar</button>
-                        </div>
-                    </td>
+                    &lt;td title="${user.username}">${user.username}&lt;/td>
+                    &lt;td title="${user.email}">${user.email}&lt;/td>
+                    &lt;td>
+                        &lt;select data-id="${user.id}" class="user-role" title="Escoge un rol">
+                            &lt;option value="ROLE_USER" ${user.rol === 'ROLE_USER' ? 'selected' : ''}>USER&lt;/option>
+                            &lt;option value="ROLE_ADMIN" ${user.rol === 'ROLE_ADMIN' ? 'selected' : ''}>ADMIN&lt;/option>
+                            &lt;option value="ROLE_VIP" ${user.rol === 'ROLE_VIP' ? 'selected' : ''}>VIP&lt;/option>
+                        &lt;/select>
+                    &lt;/td>
+                    &lt;td>
+                        &lt;div class="coins">
+                            &lt;button data-id="${user.id}" class="edit-coins-button" title="Modificar Monedas">✏️&lt;/button>
+                            &lt;span title="${user.coins}">${user.coins}&lt;/span>
+                            &lt;input type="number" class="coins-input" value="${user.coins}" style="display: none;">
+                        &lt;/div>
+                    &lt;/td>
+                    &lt;td>
+                        &lt;div class="skins">
+                            &lt;button data-id="${user.id}" class="edit-skins-button" title="Modificar Skins">✏️&lt;/button>
+                            &lt;div class="user-skins" title="${user.skins.length}">${user.skins.map(skin => document.getElementById(skin).firstChild.firstChild.value).join(', ')}&lt;/div>
+                            &lt;div data-id="${user.id}" class="skins-checkboxes-container" style="display: none;">
+                                &lt;!-- Se llenará con las skins -->
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/td>
+                    &lt;td>
+                        &lt;div class="acciones">
+                            &lt;button data-id="${user.id}" class="save-button" title="Guardar">Guardar&lt;/button>
+                            &lt;button data-id="${user.id}" class="delete-button" title="Eliminar">Eliminar&lt;/button>
+                        &lt;/div>
+                    &lt;/td>
                     `;
                         userTableBody.appendChild(row);
                     });
@@ -237,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Delegado de eventos para los botones de "Editar ✏️"
                     userTableBody.addEventListener('click', async (e) => {
                         // Editar monedas
-                        if (e.target && e.target.classList.contains('edit-coins-button')) {
+                        if (e.target &amp;&amp; e.target.classList.contains('edit-coins-button')) {
                             const row = e.target.closest('tr');
                             const user = JSON.parse(row.dataset.user);
                             const coinsSpan = row.querySelector('span');
@@ -256,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }
                         // Editar Skins (Mostrar checkboxes)
-                        if (e.target && e.target.classList.contains('edit-skins-button')) {
+                        if (e.target &amp;&amp; e.target.classList.contains('edit-skins-button')) {
                             const row = e.target.closest('tr');
                             const user = JSON.parse(row.dataset.user);
                             const userSkins = e.target.closest('td').querySelector('.user-skins');
@@ -305,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         // Guardar los cambios (rol, monedas y skins)
-                        if (e.target && e.target.classList.contains('save-button')) {
+                        if (e.target &amp;&amp; e.target.classList.contains('save-button')) {
                             const id = e.target.dataset.id;
                             const row = e.target.closest('tr');
                             const roleSelect = row.querySelector('.user-role').value;
@@ -334,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         // Eliminar usuario con confirmación
-                        if (e.target && e.target.classList.contains('delete-button')) {
+                        if (e.target &amp;&amp; e.target.classList.contains('delete-button')) {
                             const id = e.target.dataset.id;
                             const nombre = e.target.closest('tr').cells[0].innerHTML;
                             const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar al usuario ${nombre}?`);
@@ -563,7 +591,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             skinTable.addEventListener('click', async (e) => {
-                if (e.target && e.target.classList.contains('save-button')) {
+                if (e.target &amp;&amp; e.target.classList.contains('save-button')) {
                     const row = e.target.closest('tr');
                     const id = row.id;
                     const nombre = row.querySelector('input[name="nombre"]').value;
@@ -589,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                if (e.target && e.target.classList.contains('delete-button')) {
+                if (e.target &amp;&amp; e.target.classList.contains('delete-button')) {
                     const id = e.target.closest('tr').id;
                     const nombre = e.target.closest('tr').querySelector('input[name="nombre"]').value;
                     const confirmDelete = confirm(`¿Estás seguro de que deseas eliminar la skin ${nombre}?`);
@@ -647,3 +675,26 @@ function checkAuth() {
 /**
  * @author Danikileitor
  */
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#HOST">HOST</a></li><li><a href="global.html#actualizarJuego">actualizarJuego</a></li><li><a href="global.html#calcularResultado">calcularResultado</a></li><li><a href="global.html#calcularValor">calcularValor</a></li><li><a href="global.html#checkAuth">checkAuth</a></li><li><a href="global.html#comprarSkin">comprarSkin</a></li><li><a href="global.html#finalizarJuego">finalizarJuego</a></li><li><a href="global.html#formulario">formulario</a></li><li><a href="global.html#loadCoins">loadCoins</a></li><li><a href="global.html#loadPremios">loadPremios</a></li><li><a href="global.html#loadRanking">loadRanking</a></li><li><a href="global.html#loadSkinsDesbloqueadas">loadSkinsDesbloqueadas</a></li><li><a href="global.html#loadSkinsVendibles">loadSkinsVendibles</a></li><li><a href="global.html#pagarCoins">pagarCoins</a></li><li><a href="global.html#palos">palos</a></li><li><a href="global.html#playGame">playGame</a></li><li><a href="global.html#recuperarJuego">recuperarJuego</a></li><li><a href="global.html#tiendaSkins">tiendaSkins</a></li><li><a href="global.html#valores">valores</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Feb 06 2025 12:06:45 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
