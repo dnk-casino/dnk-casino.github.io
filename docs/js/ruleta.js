@@ -233,6 +233,8 @@ function verRuleta(id) {
             ruleta.src = "images/ruleta.png";
             ruleta.useMap = "#ruleta";
             mapa.name = "ruleta";
+
+            // Números del 0 al 36
             for (let i = 0; i <= 36; i++) {
                 const area = document.createElement('area');
                 area.alt = i;
@@ -240,20 +242,190 @@ function verRuleta(id) {
                 area.shape = "rect";
                 area.addEventListener('click', () => { apostar(i); });
                 switch (i) {
-                    case 1:
-                        area.coords = "10,10,10,10";
+                    case 0:
+                        area.coords = "100,100,120,120";
+                        area.href = "#";
                         break;
-
-                    //case 0
+                    case 1:
+                        area.coords = "120,80,140,100";
+                        area.href = "#";
+                        break;
+                    case 2:
+                        area.coords = "140,80,160,100";
+                        area.href = "#";
+                        break;
+                    case 3:
+                        area.coords = "160,80,180,100";
+                        area.href = "#";
+                        break;
+                    case 4:
+                        area.coords = "180,80,200,100";
+                        area.href = "#";
+                        break;
+                    case 5:
+                        area.coords = "200,80,220,100";
+                        area.href = "#";
+                        break;
+                    case 6:
+                        area.coords = "220,80,240,100";
+                        area.href = "#";
+                        break;
+                    case 7:
+                        area.coords = "240,80,260,100";
+                        area.href = "#";
+                        break;
+                    case 8:
+                        area.coords = "260,80,280,100";
+                        area.href = "#";
+                        break;
+                    case 9:
+                        area.coords = "280,80,300,100";
+                        area.href = "#";
+                        break;
+                    case 10:
+                        area.coords = "120,100,140,120";
+                        area.href = "#";
+                        break;
+                    case 11:
+                        area.coords = "140,100,160,120";
+                        area.href = "#";
+                        break;
+                    case 12:
+                        area.coords = "160,100,180,120";
+                        area.href = "#";
+                        break;
+                    case 13:
+                        area.coords = "180,100,200,120";
+                        area.href = "#";
+                        break;
+                    case 14:
+                        area.coords = "200,100,220,120";
+                        area.href = "#";
+                        break;
+                    case 15:
+                        area.coords = "220,100,240,120";
+                        area.href = "#";
+                        break;
+                    case 16:
+                        area.coords = "240,100,260,120";
+                        area.href = "#";
+                        break;
+                    case 17:
+                        area.coords = "260,100,280,120";
+                        area.href = "#";
+                        break;
+                    case 18:
+                        area.coords = "280,100,300,120";
+                        area.href = "#";
+                        break;
+                    case 19:
+                        area.coords = "120,120,140,140";
+                        area.href = "#";
+                        break;
+                    case 20:
+                        area.coords = "140,120,160,140";
+                        area.href = "#";
+                        break;
+                    case 21:
+                        area.coords = "160,120,180,140";
+                        area.href = "#";
+                        break;
+                    case 22:
+                        area.coords = "180,120,200,140";
+                        area.href = "#";
+                        break;
+                    case 23:
+                        area.coords = "200,120,220,140";
+                        area.href = "#";
+                        break;
+                    case 24:
+                        area.coords = "220,120,240,140";
+                        area.href = "#";
+                        break;
+                    case 25:
+                        area.coords = "240,120,260,140";
+                        area.href = "#";
+                        break;
+                    case 26:
+                        area.coords = "260,120,280,140";
+                        area.href = "#";
+                        break;
+                    case 27:
+                        area.coords = "280,120,300,140";
+                        area.href = "#";
+                        break;
+                    case 28:
+                        area.coords = "120,140,140,160";
+                        area.href = "#";
+                        break;
+                    case 29:
+                        area.coords = "140,140,160,160";
+                        area.href = "#";
+                        break;
+                    case 30:
+                        area.coords = "160,140,180,160";
+                        area.href = "#";
+                        break;
+                    case 31:
+                        area.coords = "180,140,200,160";
+                        area.href = "#";
+                        break;
+                    case 32:
+                        area.coords = "200,140,220,160";
+                        area.href = "#";
+                        break;
+                    case 33:
+                        area.coords = "220,140,240,160";
+                        area.href = "#";
+                        break;
+                    case 34:
+                        area.coords = "240,140,260,160";
+                        area.href = "#";
+                        break;
+                    case 35:
+                        area.coords = "260,140,280,160";
+                        area.href = "#";
+                        break;
+                    case 36:
+                        area.coords = "280,140,300,160";
+                        area.href = "#";
+                        break;
                     default:
                         area.coords = "0,0,0,0";
                         break;
                 }
                 mapa.appendChild(area);
             }
-            //Falta las areas para las apuestas que no son Plenos
+
+            // Apuestas especiales
+            const apuestasEspeciales = [
+                { nombre: "Par", coords: "400,50,450,80" },
+                { nombre: "Impar", coords: "400,100,450,130" },
+                { nombre: "Rojo", coords: "400,150,450,180" },
+                { nombre: "Negro", coords: "400,200,450,230" },
+                { nombre: "Bajo", coords: "400,250,450,280" },
+                { nombre: "Alto", coords: "400,300,450,330" },
+                { nombre: "1ª Docena", coords: "500,50,550,80" },
+                { nombre: "2ª Docena", coords: "500,100,550,130" },
+                { nombre: "3ª Docena", coords: "500,150,550,180" },
+                { nombre: "Columna 1", coords: "550,50,600,80" },
+                { nombre: "Columna 2", coords: "550,100,600,130" },
+                { nombre: "Columna 3", coords: "550,150,600,180" },
+            ];
+
+            apuestasEspeciales.forEach((apuesta) => {
+                const area = document.createElement('area');
+                area.alt = apuesta.nombre;
+                area.title = apuesta.nombre;
+                area.shape = "rect";
+                area.coords = apuesta.coords;
+                area.href = "#";
+                area.addEventListener('click', () => { apostar(apuesta.nombre); });
+                mapa.appendChild(area);
+            });
 
             ruletas.replaceChildren(ruleta, mapa);
+
         })
         .catch(error => console.error('Error:', error));
 }
