@@ -237,12 +237,9 @@ function verRuleta(id) {
 function generateSvg() {
     // Configuración de la ruleta
     const ruletaConfig = {
+        image: 'images/ruleta.png',
         width: 420,
         height: 799,
-        centerX: 210,
-        centerY: 400,
-        radius: 200,
-        numbers: 37,
         zones: [
             { name: '1-18', x: 20, y: 20, width: 120, height: 60 },
             { name: '19-36', x: 150, y: 20, width: 120, height: 60 },
@@ -255,6 +252,45 @@ function generateSvg() {
             { name: 'Columna 2', x: 70, y: 230, width: 40, height: 120 },
             { name: 'Columna 3', x: 120, y: 230, width: 40, height: 120 },
         ],
+        numbers: [
+            { x: 50, y: 200, num: "0" },
+            { x: 70, y: 220, num: "1" },
+            { x: 90, y: 240, num: "2" },
+            { x: 110, y: 260, num: "3" },
+            { x: 130, y: 280, num: "4" },
+            { x: 150, y: 300, num: "5" },
+            { x: 170, y: 320, num: "6" },
+            { x: 190, y: 340, num: "7" },
+            { x: 210, y: 360, num: "8" },
+            { x: 230, y: 380, num: "9" },
+            { x: 250, y: 400, num: "10" },
+            { x: 270, y: 420, num: "11" },
+            { x: 290, y: 440, num: "12" },
+            { x: 310, y: 460, num: "13" },
+            { x: 330, y: 480, num: "14" },
+            { x: 350, y: 500, num: "15" },
+            { x: 370, y: 520, num: "16" },
+            { x: 390, y: 540, num: "17" },
+            { x: 410, y: 560, num: "18" },
+            { x: 390, y: 580, num: "19" },
+            { x: 370, y: 600, num: "20" },
+            { x: 350, y: 620, num: "21" },
+            { x: 330, y: 640, num: "22" },
+            { x: 310, y: 660, num: "23" },
+            { x: 290, y: 680, num: "24" },
+            { x: 270, y: 700, num: "25" },
+            { x: 250, y: 720, num: "26" },
+            { x: 230, y: 740, num: "27" },
+            { x: 210, y: 760, num: "28" },
+            { x: 190, y: 780, num: "29" },
+            { x: 170, y: 700, num: "30" },
+            { x: 150, y: 680, num: "31" },
+            { x: 130, y: 660, num: "32" },
+            { x: 110, y: 640, num: "33" },
+            { x: 90, y: 620, num: "34" },
+            { x: 70, y: "600", num: "35" },
+            { x: 50, y: 580, num: "36" },
+        ]
     };
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('width', ruletaConfig.width);
@@ -263,7 +299,7 @@ function generateSvg() {
 
     // Agregar la imagen de la ruleta
     const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-    image.setAttribute('href', 'images/ruleta.png');
+    image.setAttribute('href', ruletaConfig.image);
     image.setAttribute('x', 0);
     image.setAttribute('y', 0);
     image.setAttribute('width', ruletaConfig.width);
@@ -289,24 +325,21 @@ function generateSvg() {
     });
 
     // Agregar los números de la ruleta
-    for (let i = 0; i < ruletaConfig.numbers; i++) {
-        const angle = (i / ruletaConfig.numbers) * 2 * Math.PI;
-        const x = ruletaConfig.centerX + Math.cos(angle) * ruletaConfig.radius;
-        const y = ruletaConfig.centerY + Math.sin(angle) * ruletaConfig.radius;
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'a');
-        circle.setAttribute('href', `#${i}`);
-        circle.setAttribute('alt', i);
-        circle.setAttribute('title', i);
-        const circleElement = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circleElement.setAttribute('cx', x);
-        circleElement.setAttribute('cy', y);
-        circleElement.setAttribute('r', 25);
-        circleElement.setAttribute('fill', 'none');
-        circleElement.setAttribute('stroke', 'black');
-        circleElement.setAttribute('stroke-width', 2);
-        circle.appendChild(circleElement);
-        svg.appendChild(circle);
-    }
+    ruletaConfig.numbers.forEach((numero) => {
+        const a = document.createElementNS("http://www.w3.org/2000/svg", "a");
+        a.setAttribute("href", "#");
+        a.setAttribute("alt", numero.num);
+        a.setAttribute("title", numero.num);
+        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("cx", numero.x);
+        circle.setAttribute("cy", numero.y);
+        circle.setAttribute("r", "20");
+        circle.setAttribute("fill", "none");
+        circle.setAttribute("stroke", "black");
+        circle.setAttribute("stroke-width", "2");
+        a.appendChild(circle);
+        svg.appendChild(a);
+    });
 
     return svg;
 }
