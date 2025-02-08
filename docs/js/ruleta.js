@@ -360,7 +360,7 @@ function apostar(id, casilla) {
             apuesta = { tipo: "COLUMNA3", cantidad: cantidad };
             break;
         default:
-            apuesta = { n1: parseInt(casilla, 10), cantidad: cantidad }
+            apuesta = { tipo: "PLENO", n1: parseInt(casilla, 10), cantidad: cantidad }
     }
 
     fetch(HOST + `/api/ruleta/${id}`, {
