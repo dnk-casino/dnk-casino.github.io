@@ -42,6 +42,7 @@ h1 {
 
 #ruletas {
     width: 45%;
+    height: 80vh;
     margin: 0 auto;
     text-align: center;
     background-color: #333;
@@ -69,51 +70,9 @@ h1 {
     margin-bottom: 0.5em;
 }
 
-.mano {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-
-.cartaOculta {
-    height: fit-content;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: black;
-}
-
-.carta {
-    height: fit-content;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 1px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: whitesmoke;
-    color: black;
-}
-
-.carta div:first-child,
-.cartaOculta div:first-child {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.carta div:last-child,
-.cartaOculta div:last-child {
-    font-size: 48px;
+#ruletas svg {
+    width: 100%;
+    height: 100%;
 }
 
 .buttons {
@@ -274,6 +233,10 @@ button:active {
 @media screen and (orientation: portrait) {
     h1 {
         font-size: 500%;
+    }
+
+    #ruletas{
+        height: auto;
     }
 
     #ruletas,

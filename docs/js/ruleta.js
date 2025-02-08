@@ -227,123 +227,135 @@ function verRuleta(id) {
         .then(response => response.json())
         .then(data => {
             const ruletas = document.getElementById('ruletas');
-            const svg = generateSvg();
+            const svg = generateSvg(data.id);
             ruletas.replaceChildren(svg);
         })
         .catch(error => console.error('Error:', error));
 }
 
 // Función para generar el código SVG
-function generateSvg() {
-    // Configuración de la ruleta
-    const ruletaConfig = {
-        image: 'images/ruleta.png',
-        width: 420,
-        height: 799,
-        zones: [
-            { name: '1-18', x: 20, y: 20, width: 120, height: 60 },
-            { name: '19-36', x: 150, y: 20, width: 120, height: 60 },
-            { name: 'Par', x: 20, y: 90, width: 120, height: 60 },
-            { name: 'Impar', x: 150, y: 90, width: 120, height: 60 },
-            { name: '1ª docena', x: 20, y: 160, width: 120, height: 60 },
-            { name: '2ª docena', x: 150, y: 160, width: 120, height: 60 },
-            { name: '3ª docena', x: 280, y: 160, width: 120, height: 60 },
-            { name: 'Columna 1', x: 20, y: 230, width: 40, height: 120 },
-            { name: 'Columna 2', x: 70, y: 230, width: 40, height: 120 },
-            { name: 'Columna 3', x: 120, y: 230, width: 40, height: 120 },
-        ],
-        numbers: [
-            { x: 50, y: 200, num: "0" },
-            { x: 70, y: 220, num: "1" },
-            { x: 90, y: 240, num: "2" },
-            { x: 110, y: 260, num: "3" },
-            { x: 130, y: 280, num: "4" },
-            { x: 150, y: 300, num: "5" },
-            { x: 170, y: 320, num: "6" },
-            { x: 190, y: 340, num: "7" },
-            { x: 210, y: 360, num: "8" },
-            { x: 230, y: 380, num: "9" },
-            { x: 250, y: 400, num: "10" },
-            { x: 270, y: 420, num: "11" },
-            { x: 290, y: 440, num: "12" },
-            { x: 310, y: 460, num: "13" },
-            { x: 330, y: 480, num: "14" },
-            { x: 350, y: 500, num: "15" },
-            { x: 370, y: 520, num: "16" },
-            { x: 390, y: 540, num: "17" },
-            { x: 410, y: 560, num: "18" },
-            { x: 390, y: 580, num: "19" },
-            { x: 370, y: 600, num: "20" },
-            { x: 350, y: 620, num: "21" },
-            { x: 330, y: 640, num: "22" },
-            { x: 310, y: 660, num: "23" },
-            { x: 290, y: 680, num: "24" },
-            { x: 270, y: 700, num: "25" },
-            { x: 250, y: 720, num: "26" },
-            { x: 230, y: 740, num: "27" },
-            { x: 210, y: 760, num: "28" },
-            { x: 190, y: 780, num: "29" },
-            { x: 170, y: 700, num: "30" },
-            { x: 150, y: 680, num: "31" },
-            { x: 130, y: 660, num: "32" },
-            { x: 110, y: 640, num: "33" },
-            { x: 90, y: 620, num: "34" },
-            { x: 70, y: "600", num: "35" },
-            { x: 50, y: 580, num: "36" },
-        ]
+function generateSvg(id) {
+    const svgNamespaces = {
+        svg: "http://www.w3.org/2000/svg",
+        xlink: "http://www.w3.org/1999/xlink"
     };
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('width', ruletaConfig.width);
-    svg.setAttribute('height', ruletaConfig.height);
-    svg.setAttribute('viewBox', `0 0 ${ruletaConfig.width} ${ruletaConfig.height}`);
 
-    // Agregar la imagen de la ruleta
-    const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
-    image.setAttribute('href', ruletaConfig.image);
-    image.setAttribute('x', 0);
-    image.setAttribute('y', 0);
-    image.setAttribute('width', ruletaConfig.width);
-    image.setAttribute('height', ruletaConfig.height);
+    const imagePath = "images/ruleta.png";
+
+    // Crear el contenedor SVG
+    const svg = document.createElementNS(svgNamespaces.svg, "svg");
+    svg.setAttribute("version", "1.1");
+    svg.setAttribute("xmlns", svgNamespaces.svg);
+    svg.setAttribute("xmlns:xlink", svgNamespaces.xlink);
+    svg.setAttribute("viewBox", "0 0 420 799");
+
+    // Añadir la imagen
+    const image = document.createElementNS(svgNamespaces.svg, "image");
+    image.setAttribute("width", "420");
+    image.setAttribute("height", "799");
+    image.setAttributeNS(svgNamespaces.xlink, "href", imagePath);
     svg.appendChild(image);
 
-    // Agregar las zonas de apuesta
-    ruletaConfig.zones.forEach((zone) => {
-        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'a');
-        rect.setAttribute('href', `#${zone.name}`);
-        rect.setAttribute('alt', zone.name);
-        rect.setAttribute('title', zone.name);
-        const rectElement = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        rectElement.setAttribute('x', zone.x);
-        rectElement.setAttribute('y', zone.y);
-        rectElement.setAttribute('width', zone.width);
-        rectElement.setAttribute('height', zone.height);
-        rectElement.setAttribute('fill', 'none');
-        rectElement.setAttribute('stroke', 'black');
-        rectElement.setAttribute('stroke-width', 2);
-        rect.appendChild(rectElement);
-        svg.appendChild(rect);
-    });
+    // Función para crear los elementos <a> y <rect>
+    function createLink(x, y, width, height, casilla) {
+        const a = document.createElementNS(svgNamespaces.svg, "a");
+        a.setAttribute("href", "javascript:void(0)");  // Evitar navegación
 
-    // Agregar los números de la ruleta
-    ruletaConfig.numbers.forEach((numero) => {
-        const a = document.createElementNS("http://www.w3.org/2000/svg", "a");
-        a.setAttribute("href", "#");
-        a.setAttribute("alt", numero.num);
-        a.setAttribute("title", numero.num);
-        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        circle.setAttribute("cx", numero.x);
-        circle.setAttribute("cy", numero.y);
-        circle.setAttribute("r", "20");
-        circle.setAttribute("fill", "none");
-        circle.setAttribute("stroke", "black");
-        circle.setAttribute("stroke-width", "2");
-        a.appendChild(circle);
-        svg.appendChild(a);
+        const rect = document.createElementNS(svgNamespaces.svg, "rect");
+        rect.setAttribute("x", x);
+        rect.setAttribute("y", y);
+        rect.setAttribute("width", width);
+        rect.setAttribute("height", height);
+        rect.setAttribute("fill", "rgba(0, 0, 0, 0)");
+
+        // Agregar evento para resaltar
+        rect.addEventListener("mouseover", () => {
+            rect.setAttribute("fill", "rgba(255, 255, 0, 0.5)");  // Resaltar con color amarillo semitransparente
+        });
+
+        rect.addEventListener("mouseout", () => {
+            rect.setAttribute("fill", "rgba(0, 0, 0, 0)");  // Restaurar al color original
+        });
+
+        // Al hacer click, llamar a la función apostar con la casilla
+        rect.addEventListener("click", () => {
+            apostar(id, casilla);
+        });
+
+        a.appendChild(rect);
+        return a;
+    }
+
+    // Coordenadas y dimensiones para los rectángulos
+    const rects = [
+        { x: 73, y: 87, width: 61, height: 106, casilla: "Bajo" },
+        { x: 73, y: 193, width: 61, height: 105, casilla: "Par" },
+        { x: 73, y: 298, width: 61, height: 106, casilla: "Rojo" },
+        { x: 73, y: 404, width: 61, height: 106, casilla: "Negro" },
+        { x: 73, y: 510, width: 61, height: 106, casilla: "Impar" },
+        { x: 73, y: 616, width: 61, height: 106, casilla: "Alto" },
+        { x: 134, y: 87, width: 62, height: 211, casilla: "Docena-1" },
+        { x: 134, y: 298, width: 62, height: 212, casilla: "Docena-2" },
+        { x: 134, y: 510, width: 62, height: 212, casilla: "Docena-3" },
+        { x: 196, y: 32, width: 160, height: 55, casilla: "0" },
+        ...Array.from({ length: 36 }, (_, i) => ({
+            x: 196 + (i % 3) * 53,
+            y: 87 + Math.floor(i / 3) * 53,
+            width: 53,
+            height: 53,
+            casilla: (i + 1).toString()
+        })),
+        { x: 196, y: 722, width: 53, height: 33, casilla: "Columna-1" },
+        { x: 249, y: 722, width: 53, height: 33, casilla: "Columna-2" },
+        { x: 302, y: 722, width: 53, height: 33, casilla: "Columna-3" }
+    ];
+
+    // Crear los enlaces y rectángulos
+    rects.forEach(rectData => {
+        svg.appendChild(createLink(rectData.x, rectData.y, rectData.width, rectData.height, rectData.casilla));
     });
 
     return svg;
 }
 
-function apostar(casilla) {
-    // Falta esto
+function apostar(id, casilla) {
+    const cantidad = parseInt(prompt("Introduce la cantidad de monedas a apostar:"), 10);
+    let apuesta;
+
+    switch (casilla) {
+        case "Bajo":
+        case "Alto":
+
+        case "Par":
+            apuesta = { impar: false, cantidad: cantidad }
+            break;
+        case "Impar":
+            apuesta = { impar: true, cantidad: cantidad }
+            break;
+        case "Rojo":
+        case "Negro":
+
+        case "Docena-1":
+        case "Docena-2":
+        case "Docena-3":
+        case "Columna-1":
+        case "Columna-2":
+        case "Columna-3":
+        default:
+            apuesta = { n1: parseInt(casilla, 10), cantidad: cantidad }
+    }
+
+    fetch(HOST + `/api/ruleta/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        },
+        body: JSON.stringify(apuesta)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => console.error('Error:', error));
 }
