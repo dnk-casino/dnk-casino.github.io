@@ -324,23 +324,41 @@ function apostar(id, casilla) {
 
     switch (casilla) {
         case "Bajo":
+            apuesta = { tipo: "BAJO", cantidad: cantidad };
+            break;
         case "Alto":
-
+            apuesta = { tipo: "ALTO", cantidad: cantidad };
+            break;
         case "Par":
-            apuesta = { impar: false, cantidad: cantidad }
+            apuesta = { tipo: "PAR", cantidad: cantidad };
             break;
         case "Impar":
-            apuesta = { impar: true, cantidad: cantidad }
+            apuesta = { tipo: "IMPAR", cantidad: cantidad };
             break;
         case "Rojo":
+            apuesta = { tipo: "ROJO", cantidad: cantidad };
+            break;
         case "Negro":
-
+            apuesta = { tipo: "NEGRO", cantidad: cantidad };
+            break;
         case "Docena-1":
+            apuesta = { tipo: "DOCENA1", cantidad: cantidad };
+            break;
         case "Docena-2":
+            apuesta = { tipo: "DOCENA2", cantidad: cantidad };
+            break;
         case "Docena-3":
+            apuesta = { tipo: "DOCENA3", cantidad: cantidad };
+            break;
         case "Columna-1":
+            apuesta = { tipo: "COLUMNA1", cantidad: cantidad };
+            break;
         case "Columna-2":
+            apuesta = { tipo: "COLUMNA2", cantidad: cantidad };
+            break;
         case "Columna-3":
+            apuesta = { tipo: "COLUMNA3", cantidad: cantidad };
+            break;
         default:
             apuesta = { n1: parseInt(casilla, 10), cantidad: cantidad }
     }
