@@ -227,14 +227,14 @@ function verRuleta(id) {
         .then(response => response.json())
         .then(data => {
             const ruletas = document.getElementById('ruletas');
-            const svg = generateSvg(data.id);
+            const svg = generateSvg(data);
             ruletas.replaceChildren(svg);
         })
         .catch(error => console.error('Error:', error));
 }
 
 // Función para generar el código SVG
-function generateSvg(id) {
+function generateSvg(ruleta) {
     const svgNamespaces = {
         svg: "http://www.w3.org/2000/svg",
         xlink: "http://www.w3.org/1999/xlink"
@@ -248,6 +248,7 @@ function generateSvg(id) {
     svg.setAttribute("xmlns", svgNamespaces.svg);
     svg.setAttribute("xmlns:xlink", svgNamespaces.xlink);
     svg.setAttribute("viewBox", "0 0 420 799");
+    svg.id = ruleta.id;
 
     // Añadir la imagen
     const image = document.createElementNS(svgNamespaces.svg, "image");
@@ -279,7 +280,7 @@ function generateSvg(id) {
 
         // Al hacer click, llamar a la función apostar con la casilla
         rect.addEventListener("click", () => {
-            apostar(id, casilla);
+            apostar(ruleta.id, casilla);
         });
 
         a.appendChild(rect);
@@ -374,6 +375,8 @@ function apostar(id, casilla) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            verRuleta(id);
+            pagarCoins(cantidad);
         })
         .catch(error => console.error('Error:', error));
 }
