@@ -171,7 +171,7 @@ function loadRuletas() {
         .then(data => {
             const ruletas = document.getElementById('ruletas');
             const tabla = document.createElement('table');
-            tabla.className = tablaRuletas;
+            tabla.className = "tablaRuletas";
             data.forEach((ruleta, i) => {
                 const fila = document.createElement('tr');
                 const nombre = document.createElement('td');
