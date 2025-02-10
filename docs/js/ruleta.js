@@ -258,7 +258,7 @@ function verRuleta(id) {
 
                 acciones.replaceChildren(salir, actualizar, girar);
             } else {
-
+                acciones.replaceChildren(salir);
             }
 
             ruletas.replaceChildren(acciones, svg);
