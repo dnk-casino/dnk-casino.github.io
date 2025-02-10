@@ -74,6 +74,10 @@ h1 {
     height: 90%;
 }
 
+.tablaRuletas {
+    color: whitesmoke;
+}
+
 .buttons {
     display: flex;
     justify-content: space-around;
