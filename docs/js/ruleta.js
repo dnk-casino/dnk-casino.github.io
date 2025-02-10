@@ -228,7 +228,40 @@ function verRuleta(id) {
         .then(data => {
             const ruletas = document.getElementById('ruletas');
             const svg = generateSvg(data);
-            ruletas.replaceChildren(svg);
+            const acciones = document.createElement('div');
+            const salir = document.createElement('button');
+
+            salir.textContent = "↩️";
+            salir.title = "Salir de la ruleta";
+
+            salir.addEventListener("click", () => {
+                loadRuletas();
+            });
+
+            if (data.ruletaAbierta) {
+                const actualizar = document.createElement('button');
+                const girar = document.createElement('button');
+
+                actualizar.textContent = "🔄️";
+                actualizar.title = "Refrescar ruleta";
+                girar.textContent = "🎡";
+                girar.title = "Girar ruleta";
+                acciones.className = "buttons";
+
+                actualizar.addEventListener("click", () => {
+                    verRuleta(data.id);
+                });
+
+                girar.addEventListener("click", () => {
+                    girarRuleta(data.id);
+                });
+
+                acciones.replaceChildren(salir, actualizar, girar);
+            } else {
+
+            }
+
+            ruletas.replaceChildren(acciones, svg);
         })
         .catch(error => console.error('Error:', error));
 }
@@ -377,6 +410,39 @@ function apostar(id, casilla) {
             console.log(data);
             verRuleta(id);
             pagarCoins(cantidad);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function cerrarRuleta(id) {
+    fetch(HOST + `/api/ruleta/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            verRuleta(id);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function girarRuleta(id) {
+    fetch(HOST + `/api/ruleta/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            verRuleta(id);
+            loadCoins();
         })
         .catch(error => console.error('Error:', error));
 }
