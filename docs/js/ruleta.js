@@ -467,25 +467,38 @@ function generarRuleta() {
     const ruleta = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     ruleta.setAttribute("cx", 200);
     ruleta.setAttribute("cy", 200);
-    ruleta.setAttribute("r", 150);
-    ruleta.setAttribute("fill", "green");
+    ruleta.setAttribute("r", 180);
+    ruleta.setAttribute("fill", "none");
+    ruleta.setAttribute("stroke", "black");
+    ruleta.setAttribute("stroke-width", 2);
     ruletaSVG.appendChild(ruleta);
 
     // Creamos las casillas de la ruleta
     for (let i = 0; i < 37; i++) {
-        const casilla = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        casilla.setAttribute("d", `M 200 200 L 200 50 A 150 150 0 ${i < 18 ? 0 : 1} 1 200 350`);
-        casilla.setAttribute("fill", i % 2 === 0 ? "red" : "black");
-        casilla.setAttribute("stroke", "white");
-        casilla.setAttribute("stroke-width", 2);
-        ruletaSVG.appendChild(casilla);
+        const anguloInicio = (i * 9.73) * Math.PI / 180;
+        const anguloFin = ((i + 1) * 9.73) * Math.PI / 180;
+        const radioExterno = 170;
+        const radioInterno = 50;
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", `
+        M ${200 + radioExterno * Math.cos(anguloInicio)} ${200 + radioExterno * Math.sin(anguloInicio)}
+        A ${radioExterno} ${radioExterno} 0 0 1 ${200 + radioExterno * Math.cos(anguloFin)} ${200 + radioExterno * Math.sin(anguloFin)}
+        L ${200 + radioInterno * Math.cos(anguloFin)} ${200 + radioInterno * Math.sin(anguloFin)}
+        A ${radioInterno} ${radioInterno} 0 0 0 ${200 + radioInterno * Math.cos(anguloInicio)} ${200 + radioInterno * Math.sin(anguloInicio)}
+        Z
+      `);
+        path.setAttribute("fill", i % 2 === 0 ? "red" : "black");
+        path.setAttribute("stroke", "black");
+        path.setAttribute("stroke-width", 1);
+        ruletaSVG.appendChild(path);
 
         // Agregamos el texto de la casilla
         const texto = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        texto.setAttribute("x", 200 + Math.cos(i * Math.PI / 18.5) * 120);
-        texto.setAttribute("y", 200 + Math.sin(i * Math.PI / 18.5) * 120);
+        texto.setAttribute("x", 200 + (radioExterno + radioInterno) / 2 * Math.cos((anguloInicio + anguloFin) / 2));
+        texto.setAttribute("y", 200 + (radioExterno + radioInterno) / 2 * Math.sin((anguloInicio + anguloFin) / 2));
         texto.setAttribute("text-anchor", "middle");
         texto.setAttribute("font-size", 14);
+        texto.setAttribute("fill", i % 2 === 0 ? "black" : "white");
         texto.textContent = i.toString();
         ruletaSVG.appendChild(texto);
     }
@@ -512,8 +525,8 @@ function lanzarRuleta(ruleta, bola) {
             clearInterval(intervalo);
             // Animamos la bola
             const resultado = Math.floor(Math.random() * 37);
-            const x = 200 + Math.cos(resultado * Math.PI / 18.5) * 120;
-            const y = 200 + Math.sin(resultado * Math.PI / 18.5) * 120;
+            const x = 200 + Math.cos(resultado * 9.73 * Math.PI / 180) * 150;
+            const y = 200 + Math.sin(resultado * 9.73 * Math.PI / 180) * 150;
             const intervaloBola = setInterval(() => {
                 const cx = parseFloat(bola.getAttribute("cx"));
                 const cy = parseFloat(bola.getAttribute("cy"));
