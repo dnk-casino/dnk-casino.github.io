@@ -487,7 +487,7 @@ function generarRuleta() {
         A ${radioInterno} ${radioInterno} 0 0 0 ${200 + radioInterno * Math.cos(anguloInicio)} ${200 + radioInterno * Math.sin(anguloInicio)}
         Z
       `);
-        path.setAttribute("fill", i % 2 === 0 ? "red" : "black");
+        path.setAttribute("fill", i === 0 ? "green" : (i % 2 === 0 ? "red" : "black"));
         path.setAttribute("stroke", "black");
         path.setAttribute("stroke-width", 1);
         ruletaSVG.appendChild(path);
