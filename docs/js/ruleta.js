@@ -217,7 +217,7 @@ function crearRuleta() {
         .catch(error => console.error('Error:', error));
 }
 
-function verRuleta(id) {
+function verRuleta(id, girar = false) {
     fetch(HOST + `/api/ruleta/${id}`, {
         method: 'GET',
         headers: {
@@ -231,6 +231,7 @@ function verRuleta(id) {
             const svg = generateSvg(data);
             const acciones = document.createElement('div');
             const salir = document.createElement('button');
+            const { ruletaSVG, ruleta, bola } = generarRuleta();
 
             salir.textContent = "↩️";
             salir.title = "Salir de la ruleta";
@@ -262,7 +263,11 @@ function verRuleta(id) {
                 acciones.replaceChildren(salir);
             }
 
-            ruletas.replaceChildren(acciones, svg);
+            ruletas.replaceChildren(acciones, ruletaSVG, svg);
+
+            if (girar) {
+                lanzarRuleta(ruleta, bola);
+            }
         })
         .catch(error => console.error('Error:', error));
 }
@@ -445,8 +450,81 @@ function girarRuleta(id) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            verRuleta(id);
+            verRuleta(id, true);
             loadCoins();
         })
         .catch(error => console.error('Error:', error));
+}
+
+// Función para generar el SVG de la ruleta
+function generarRuleta() {
+    // Creamos el SVG
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", 400);
+    svg.setAttribute("height", 400);
+
+    // Creamos el círculo de la ruleta
+    const ruleta = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    ruleta.setAttribute("cx", 200);
+    ruleta.setAttribute("cy", 200);
+    ruleta.setAttribute("r", 150);
+    ruleta.setAttribute("fill", "green");
+    svg.appendChild(ruleta);
+
+    // Creamos las casillas de la ruleta
+    for (let i = 0; i < 37; i++) {
+        const casilla = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        casilla.setAttribute("d", `M 200 200 L 200 50 A 150 150 0 ${i < 18 ? 0 : 1} 1 200 350`);
+        casilla.setAttribute("fill", i % 2 === 0 ? "red" : "black");
+        casilla.setAttribute("stroke", "white");
+        casilla.setAttribute("stroke-width", 2);
+        svg.appendChild(casilla);
+
+        // Agregamos el texto de la casilla
+        const texto = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        texto.setAttribute("x", 200 + Math.cos(i * Math.PI / 18.5) * 120);
+        texto.setAttribute("y", 200 + Math.sin(i * Math.PI / 18.5) * 120);
+        texto.setAttribute("text-anchor", "middle");
+        texto.setAttribute("font-size", 14);
+        texto.textContent = i.toString();
+        svg.appendChild(texto);
+    }
+
+    // Creamos la bola
+    const bola = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    bola.setAttribute("cx", 200);
+    bola.setAttribute("cy", 200);
+    bola.setAttribute("r", 10);
+    bola.setAttribute("fill", "white");
+    svg.appendChild(bola);
+
+    return { svg, ruleta, bola };
+}
+
+// Función para lanzar la ruleta
+function lanzarRuleta(ruleta, bola) {
+    // Animamos la ruleta
+    let angulo = 0;
+    const intervalo = setInterval(() => {
+        angulo += 10;
+        ruleta.setAttribute("transform", `rotate(${angulo} 200 200)`);
+        if (angulo >= 360 * 3) {
+            clearInterval(intervalo);
+            // Animamos la bola
+            const resultado = Math.floor(Math.random() * 37);
+            const x = 200 + Math.cos(resultado * Math.PI / 18.5) * 120;
+            const y = 200 + Math.sin(resultado * Math.PI / 18.5) * 120;
+            const intervaloBola = setInterval(() => {
+                const cx = parseFloat(bola.getAttribute("cx"));
+                const cy = parseFloat(bola.getAttribute("cy"));
+                if (Math.abs(cx - x) < 1 && Math.abs(cy - y) < 1) {
+                    clearInterval(intervaloBola);
+                    alert(`El resultado es: ${resultado}`);
+                } else {
+                    bola.setAttribute("cx", cx + (x - cx) / 10);
+                    bola.setAttribute("cy", cy + (y - cy) / 10);
+                }
+            }, 16);
+        }
+    }, 16);
 }
