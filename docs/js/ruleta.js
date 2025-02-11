@@ -525,10 +525,13 @@ function lanzarRuleta(ruleta, bola) {
             clearInterval(intervalo);
             // Animamos la bola
             const resultado = Math.floor(Math.random() * 37);
-            const anguloResultado = (resultado * 9.73) * Math.PI / 180;
-            const radio = 150;
-            const x = 200 + radio * Math.cos(anguloResultado);
-            const y = 200 + radio * Math.sin(anguloResultado);
+            const anguloInicio = (resultado * 9.73) * Math.PI / 180;
+            const anguloFin = ((resultado + 1) * 9.73) * Math.PI / 180;
+            const radioExterno = 170;
+            const radioInterno = 50;
+            const radio = (radioExterno + radioInterno) / 2;
+            const x = 200 + radio * Math.cos((anguloInicio + anguloFin) / 2);
+            const y = 200 + radio * Math.sin((anguloInicio + anguloFin) / 2);
             const intervaloBola = setInterval(() => {
                 const cx = parseFloat(bola.getAttribute("cx"));
                 const cy = parseFloat(bola.getAttribute("cy"));
