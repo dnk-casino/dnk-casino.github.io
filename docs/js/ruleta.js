@@ -459,9 +459,9 @@ function girarRuleta(id) {
 // Función para generar el SVG de la ruleta
 function generarRuleta() {
     // Creamos el SVG
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("width", 400);
-    svg.setAttribute("height", 400);
+    const ruletaSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    ruletaSVG.setAttribute("width", 400);
+    ruletaSVG.setAttribute("height", 400);
 
     // Creamos el círculo de la ruleta
     const ruleta = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -469,7 +469,7 @@ function generarRuleta() {
     ruleta.setAttribute("cy", 200);
     ruleta.setAttribute("r", 150);
     ruleta.setAttribute("fill", "green");
-    svg.appendChild(ruleta);
+    ruletaSVG.appendChild(ruleta);
 
     // Creamos las casillas de la ruleta
     for (let i = 0; i < 37; i++) {
@@ -478,7 +478,7 @@ function generarRuleta() {
         casilla.setAttribute("fill", i % 2 === 0 ? "red" : "black");
         casilla.setAttribute("stroke", "white");
         casilla.setAttribute("stroke-width", 2);
-        svg.appendChild(casilla);
+        ruletaSVG.appendChild(casilla);
 
         // Agregamos el texto de la casilla
         const texto = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -487,7 +487,7 @@ function generarRuleta() {
         texto.setAttribute("text-anchor", "middle");
         texto.setAttribute("font-size", 14);
         texto.textContent = i.toString();
-        svg.appendChild(texto);
+        ruletaSVG.appendChild(texto);
     }
 
     // Creamos la bola
@@ -496,9 +496,9 @@ function generarRuleta() {
     bola.setAttribute("cy", 200);
     bola.setAttribute("r", 10);
     bola.setAttribute("fill", "white");
-    svg.appendChild(bola);
+    ruletaSVG.appendChild(bola);
 
-    return { svg, ruleta, bola };
+    return { ruletaSVG, ruleta, bola };
 }
 
 // Función para lanzar la ruleta
