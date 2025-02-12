@@ -451,7 +451,6 @@ function girarRuleta(id) {
         .then(response => response.json())
         .then(data => {
             verRuleta(id, true);
-            loadCoins();
         })
         .catch(error => console.error('Error:', error));
 }
@@ -552,4 +551,5 @@ function lanzarRuleta(ruletaSVG, ruleta, bola, resultado) {
             }, 16);
         }
     }, 16);
+    loadCoins();
 }
