@@ -231,7 +231,7 @@ function verRuleta(id, girar = false) {
             const svg = generateSvg(data);
             const acciones = document.createElement('div');
             const salir = document.createElement('button');
-            const { ruletaSVG, bola } = generarRuleta();
+            const { ruletaSVG, ruleta, bola } = generarRuleta();
 
             salir.textContent = "↩️";
             salir.title = "Salir de la ruleta";
@@ -266,7 +266,7 @@ function verRuleta(id, girar = false) {
             ruletas.replaceChildren(acciones, ruletaSVG, svg);
 
             if (girar) {
-                lanzarRuleta(ruletaSVG, bola);
+                lanzarRuleta(ruletaSVG, ruleta, bola);
             }
         })
         .catch(error => console.error('Error:', error));
@@ -511,11 +511,11 @@ function generarRuleta() {
     bola.setAttribute("fill", "white");
     ruletaSVG.appendChild(bola);
 
-    return { ruletaSVG, bola };
+    return { ruletaSVG, ruleta, bola };
 }
 
 // Función para lanzar la ruleta
-function lanzarRuleta(ruletaSVG, bola) {
+function lanzarRuleta(ruletaSVG, ruleta, bola) {
     // Animamos la ruleta y la bola
     let angulo = 0;
     let anguloBola = 0;
@@ -524,6 +524,7 @@ function lanzarRuleta(ruletaSVG, bola) {
     const intervalo = setInterval(() => {
         const tiempoTranscurrido = Date.now() - inicio;
         angulo += 10;
+        ruleta.setAttribute("transform", `rotate(${angulo} 200 200)`);
         ruletaSVG.querySelectorAll("path, text").forEach(element => {
             element.setAttribute("transform", `rotate(${angulo} 200 200)`);
         });
