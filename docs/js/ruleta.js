@@ -528,8 +528,7 @@ function lanzarRuleta(ruleta, bola) {
             const anguloInicio = (resultado * 9.73) * Math.PI / 180;
             const anguloFin = ((resultado + 1) * 9.73) * Math.PI / 180;
             const radioExterno = 170;
-            const radioInterno = 50;
-            const radio = (radioExterno + radioInterno) / 2;
+            const radio = radioExterno - 20;
             const x = 200 + radio * Math.cos((anguloInicio + anguloFin) / 2);
             const y = 200 + radio * Math.sin((anguloInicio + anguloFin) / 2);
             const intervaloBola = setInterval(() => {
