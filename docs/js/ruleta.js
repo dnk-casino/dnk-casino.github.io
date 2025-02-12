@@ -416,7 +416,6 @@ function apostar(id, casilla) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             verRuleta(id);
             pagarCoins(cantidad);
         })
@@ -433,7 +432,6 @@ function cerrarRuleta(id) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             verRuleta(id);
         })
         .catch(error => console.error('Error:', error));
@@ -449,7 +447,6 @@ function girarRuleta(id) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             verRuleta(id, true);
             loadCoins();
         })
