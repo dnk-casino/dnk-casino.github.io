@@ -228,11 +228,14 @@ function verRuleta(id, girar = false) {
         .then(response => response.json())
         .then(data => {
             const ruletas = document.getElementById('ruletas');
+            const div = document.createElement('div');
             const svg = generateSvg(data);
             const acciones = document.createElement('div');
             const salir = document.createElement('button');
             const { ruletaSVG, ruleta, bola } = generarRuleta();
 
+            div.id = id;
+            div.className = "ruleta";
             salir.textContent = "↩️";
             salir.title = "Salir de la ruleta";
 
@@ -263,7 +266,8 @@ function verRuleta(id, girar = false) {
                 acciones.replaceChildren(salir);
             }
 
-            ruletas.replaceChildren(acciones, ruletaSVG, svg);
+            div.replaceChildren(ruletaSVG, svg);
+            ruletas.replaceChildren(acciones, div);
 
             if (girar) {
                 lanzarRuleta(ruletaSVG, ruleta, bola, data.numeroGanador);
