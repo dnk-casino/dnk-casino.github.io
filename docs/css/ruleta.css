@@ -75,9 +75,13 @@ h1 {
 
 .ruleta {
     display: flex;
-    align-items: stretch;
+    align-items: start;
     width: 100%;
     height: 100%;
+}
+
+.ruleta :first-child {
+    align-self: stretch;
 }
 
 .buttons {
