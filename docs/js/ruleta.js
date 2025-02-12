@@ -362,7 +362,7 @@ function generateSvg(ruleta) {
 }
 
 function apostar(id, casilla) {
-    const cantidad = parseInt(prompt("Introduce la cantidad de monedas a apostar:"), 10);
+    const cantidad = parseInt(prompt(`Introduce la cantidad de monedas a apostar a ${casilla}:`), 10);
     if (isNaN(cantidad)) {
         cantidad = 0;
     }
