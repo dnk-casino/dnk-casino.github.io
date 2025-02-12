@@ -290,7 +290,6 @@ function generateSvg(ruleta) {
     svg.setAttribute("xmlns", svgNamespaces.svg);
     svg.setAttribute("xmlns:xlink", svgNamespaces.xlink);
     svg.setAttribute("viewBox", "0 0 420 799");
-    svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
     svg.id = ruleta.id;
 
     // Añadir la imagen
@@ -462,7 +461,6 @@ function generarRuleta() {
     // Creamos el SVG
     const ruletaSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     ruletaSVG.setAttribute("viewBox", "0 0 400 400");
-    ruletaSVG.setAttribute("preserveAspectRatio", "xMidYMid slice");
 
     // Creamos el círculo de la ruleta
     const ruleta = document.createElementNS("http://www.w3.org/2000/svg", "circle");

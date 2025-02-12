@@ -79,6 +79,10 @@ h1 {
     width: 100%;
 }
 
+.ruleta :first-child {
+    height: 90%;
+}
+
 .buttons {
     display: flex;
     justify-content: space-around;
