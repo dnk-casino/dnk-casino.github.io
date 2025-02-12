@@ -82,11 +82,6 @@ h1 {
 
 .ruleta :first-child {
     align-self: stretch;
-    flex-basis: 70%;
-}
-
-.ruleta :last-child {
-    flex-basis: 30%;
 }
 
 .buttons {
