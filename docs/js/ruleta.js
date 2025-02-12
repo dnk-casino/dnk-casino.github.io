@@ -516,14 +516,21 @@ function generarRuleta() {
 
 // Función para lanzar la ruleta
 function lanzarRuleta(ruleta, bola) {
-    // Animamos la ruleta
+    // Animamos la ruleta y la bola
     let angulo = 0;
+    let anguloBola = 0;
     const intervalo = setInterval(() => {
         angulo += 10;
         ruleta.setAttribute("transform", `rotate(${angulo} 200 200)`);
+        anguloBola += 5;
+        const radio = 150;
+        const x = 200 + radio * Math.cos(anguloBola * Math.PI / 180);
+        const y = 200 + radio * Math.sin(anguloBola * Math.PI / 180);
+        bola.setAttribute("cx", x);
+        bola.setAttribute("cy", y);
         if (angulo >= 360 * 3) {
             clearInterval(intervalo);
-            // Animamos la bola
+            // Animamos la bola hacia el resultado
             const resultado = Math.floor(Math.random() * 37);
             const anguloInicio = (resultado * 9.73) * Math.PI / 180;
             const anguloFin = ((resultado + 1) * 9.73) * Math.PI / 180;
