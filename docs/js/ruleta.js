@@ -234,7 +234,6 @@ function verRuleta(id, girar = false) {
             const salir = document.createElement('button');
             const { ruletaSVG, ruleta, bola } = generarRuleta();
 
-            div.id = id;
             div.className = "ruleta";
             salir.textContent = "↩️";
             salir.title = "Salir de la ruleta";
@@ -461,8 +460,7 @@ function girarRuleta(id) {
 function generarRuleta() {
     // Creamos el SVG
     const ruletaSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    ruletaSVG.setAttribute("width", 400);
-    ruletaSVG.setAttribute("height", 400);
+    ruletaSVG.setAttribute("viewBox", "0 0 400 400");
 
     // Creamos el círculo de la ruleta
     const ruleta = document.createElementNS("http://www.w3.org/2000/svg", "circle");
