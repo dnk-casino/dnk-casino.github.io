@@ -266,7 +266,7 @@ function verRuleta(id, girar = false) {
             ruletas.replaceChildren(acciones, ruletaSVG, svg);
 
             if (girar) {
-                lanzarRuleta(ruletaSVG, ruleta, bola);
+                lanzarRuleta(ruletaSVG, ruleta, bola, data.numeroGanador);
             }
         })
         .catch(error => console.error('Error:', error));
@@ -515,7 +515,7 @@ function generarRuleta() {
 }
 
 // Función para lanzar la ruleta
-function lanzarRuleta(ruletaSVG, ruleta, bola) {
+function lanzarRuleta(ruletaSVG, ruleta, bola, resultado) {
     // Animamos la ruleta y la bola
     let angulo = 0;
     let anguloBola = 0;
@@ -534,7 +534,6 @@ function lanzarRuleta(ruletaSVG, ruleta, bola) {
         if (angulo >= 360 * 10) {
             clearInterval(intervalo);
             // Animamos la bola hacia el resultado
-            const resultado = Math.floor(Math.random() * 37);
             const anguloInicio = (resultado * 9.73) * Math.PI / 180;
             const anguloFin = ((resultado + 1) * 9.73) * Math.PI / 180;
             const radioExterno = 170;
