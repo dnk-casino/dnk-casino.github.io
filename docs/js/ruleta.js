@@ -553,6 +553,7 @@ function lanzarRuleta(ruletaSVG, ruleta, bola, resultado) {
                     bola.setAttribute("cy", cy + (y - cy) / 10);
                 }
             }, 16);
+            console.log("se acabó 2");
         }
     }, 16);
     loadCoins();
