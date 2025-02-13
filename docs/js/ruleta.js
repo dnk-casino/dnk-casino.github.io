@@ -524,7 +524,7 @@ function lanzarRuleta(ruletaSVG, ruleta, bola, resultado) {
     const intervalo = setInterval(() => {
         angulo += 10;
         ruleta.setAttribute("transform", `rotate(${angulo} 200 200)`);
-        ruletaSVG.querySelectorAll("path").forEach(element => {
+        ruletaSVG.querySelectorAll("path, text").forEach(element => {
             element.setAttribute("transform", `rotate(${angulo} 200 200)`);
         });
         anguloBola += 5;
