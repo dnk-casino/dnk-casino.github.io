@@ -499,6 +499,7 @@ function generarRuleta() {
         texto.setAttribute("text-anchor", "middle");
         texto.setAttribute("font-size", 14);
         texto.setAttribute("fill", i === 0 ? "black" : (i % 2 === 0 ? "white" : "black"));
+        texto.setAttribute("dominant-baseline", "hanging");
         texto.textContent = i.toString();
         ruletaSVG.appendChild(texto);
     }
