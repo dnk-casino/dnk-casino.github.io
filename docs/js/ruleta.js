@@ -496,10 +496,10 @@ function generarRuleta() {
         const anguloTexto = (anguloInicio + anguloFin) / 2;
         texto.setAttribute("x", 200 + radio * Math.cos(anguloTexto));
         texto.setAttribute("y", 200 + radio * Math.sin(anguloTexto));
+        texto.setAttribute("dominant-baseline", "middle");
         texto.setAttribute("text-anchor", "middle");
         texto.setAttribute("font-size", 14);
         texto.setAttribute("fill", i === 0 ? "black" : (i % 2 === 0 ? "white" : "black"));
-        texto.setAttribute("dominant-baseline", "hanging");
         texto.textContent = i.toString();
         ruletaSVG.appendChild(texto);
     }
