@@ -500,6 +500,7 @@ function generarRuleta() {
         texto.setAttribute("text-anchor", "middle");
         texto.setAttribute("font-size", 14);
         texto.setAttribute("fill", i === 0 ? "black" : (i % 2 === 0 ? "white" : "black"));
+        texto.setAttribute("transform", `rotate(${(anguloTexto * 180 / Math.PI) - 90} ${200 + radio * Math.cos(anguloTexto)} ${200 + radio * Math.sin(anguloTexto)})`);
         texto.textContent = i.toString();
         ruletaSVG.appendChild(texto);
     }
