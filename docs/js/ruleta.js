@@ -548,13 +548,12 @@ function lanzarRuleta(ruletaSVG, ruleta, bola, resultado) {
                 if (Math.abs(cx - x) < 1 && Math.abs(cy - y) < 1) {
                     clearInterval(intervaloBola);
                     alert(`El resultado es: ${resultado}`);
+                    loadCoins();
                 } else {
                     bola.setAttribute("cx", cx + (x - cx) / 10);
                     bola.setAttribute("cy", cy + (y - cy) / 10);
                 }
             }, 16);
-            console.log("se acabó 2");
         }
     }, 16);
-    loadCoins();
 }
