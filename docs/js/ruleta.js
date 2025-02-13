@@ -492,8 +492,10 @@ function generarRuleta() {
 
         // Agregamos el texto de la casilla
         const texto = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        texto.setAttribute("x", 200 + (radioExterno - 20) * Math.cos((anguloInicio + anguloFin) / 2));
-        texto.setAttribute("y", 200 + (radioExterno - 20) * Math.sin((anguloInicio + anguloFin) / 2));
+        const radio = (radioExterno + radioInterno) / 2;
+        const anguloTexto = (anguloInicio + anguloFin) / 2;
+        texto.setAttribute("x", 200 + radio * Math.cos(anguloTexto));
+        texto.setAttribute("y", 200 + radio * Math.sin(anguloTexto));
         texto.setAttribute("text-anchor", "middle");
         texto.setAttribute("font-size", 14);
         texto.setAttribute("fill", i === 0 ? "black" : (i % 2 === 0 ? "white" : "black"));
