@@ -315,7 +315,7 @@ function verRuleta(id, girar = false) {
             ruletas.replaceChildren(acciones, div);
 
             if (girar) {
-                lanzarRuleta(ruletaSVG, grupo, bola, data.numeroGanador);
+                lanzarRuleta(grupo, bola, data.numeroGanador);
             }
         })
         .catch(error => console.error('Error:', error));
@@ -611,12 +611,11 @@ function generarRuleta() {
 
 /**
  * Función para lanzar la ruleta
- * @param {SVGElement} ruletaSVG - El SVG de la ruleta
  * @param {SVGElement} grupo - La ruleta con los números
  * @param {SVGElement} bola - La bola
  * @param {number} resultado - El resultado de la ruleta
  */
-function lanzarRuleta(ruletaSVG, grupo, bola, resultado) {
+function lanzarRuleta(grupo, bola, resultado) {
     // Animamos la ruleta y la bola
     let angulo = 0;
     let anguloBola = 0;
