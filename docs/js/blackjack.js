@@ -11,23 +11,23 @@ const palos = {
     /**
      * Palo oculto
      */
-    OCULTO: { nombre: "Oculto", simbolo: "" },
+    OCULTO: { nombre: "Oculto", simbolo: "🔳" },
     /**
      * Palo de corazones
      */
-    CORAZONES: { nombre: "Corazones", simbolo: "" },
+    CORAZONES: { nombre: "Corazones", simbolo: "♥️" },
     /**
      * Palo de diamantes
      */
-    DIAMANTES: { nombre: "Diamantes", simbolo: "" },
+    DIAMANTES: { nombre: "Diamantes", simbolo: "♦️" },
     /**
      * Palo de picas
      */
-    PICAS: { nombre: "Picas", simbolo: "" },
+    PICAS: { nombre: "Picas", simbolo: "♠️" },
     /**
      * Palo de tréboles
      */
-    TREBOLES: { nombre: "Tréboles", simbolo: "" }
+    TREBOLES: { nombre: "Tréboles", simbolo: "♣️" }
 };
 
 /**
@@ -204,7 +204,7 @@ function loadCoins() {
     })
         .then(response => response.json())
         .then(data => {
-            coinsAmount.textContent = data + "";
+            coinsAmount.textContent = data + "🪙";
         })
         .catch(error => console.error('Error:', error));
 };
@@ -588,7 +588,7 @@ function checkAuth() {
 function pagarCoins(cost) {
     const coinsAmount = document.getElementById('coins-amount');
     const dinero = parseInt(coinsAmount.textContent.slice(0, -2), 10);
-    coinsAmount.textContent = (dinero - cost) + "";
+    coinsAmount.textContent = (dinero - cost) + "🪙";
 }
 
 /**
